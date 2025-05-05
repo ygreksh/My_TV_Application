@@ -26,16 +26,16 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-//            MyTVApplicationTheme {
-//                Surface(
-//                    shape = RectangleShape,
-//                    modifier = Modifier
-//                        .fillMaxSize()
+            MyTVApplicationTheme {
+                Surface(
+                    shape = RectangleShape,
+                    modifier = Modifier
+                        .fillMaxSize()
 //                        .background(MyBlue)
-//                ) {
+                ) {
                     Greeting("Android")
-//                }
-//            }
+                }
+            }
         }
     }
 }
@@ -45,13 +45,13 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-//            .fillMaxSize()
-//            .background(MyTVBlack)
+            .fillMaxSize()
+            .background(MyTVBlack)
     ) {
         Text(
             text = "Hello $name!",
-//            color = MyTVWhite,
-            color = MyGreen,
+            color = MyTVWhite,
+//            color = MyGreen,
             modifier = modifier
         )
     }
