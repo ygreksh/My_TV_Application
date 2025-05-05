@@ -34,6 +34,7 @@ import androidx.tv.material3.ButtonGlow
 import androidx.tv.material3.ButtonScale
 import androidx.tv.material3.ButtonShape
 import androidx.tv.material3.ExperimentalTvMaterial3Api
+import androidx.tv.material3.Icon
 import androidx.tv.material3.Surface
 import com.example.mytvapplication.ui.theme.MyBlue
 import com.example.mytvapplication.ui.theme.MyGreen
@@ -41,6 +42,10 @@ import com.example.mytvapplication.ui.theme.MyTVApplicationTheme
 import com.example.mytvapplication.ui.theme.MyTVBlack
 import com.example.mytvapplication.ui.theme.MyTVWhite
 import com.example.mytvapplication.ui.theme.Purple40
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.size
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalTvMaterial3Api::class)
@@ -63,6 +68,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
+    var button1Text: String = remember { "on" }
+
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -73,26 +80,32 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             Text(
                 text = "Hello $name!",
                 color = MyTVWhite,
-                modifier = modifier
+                modifier = modifier-
 //                modifier = Modifier
 //                    .focusable()
 //                    .clickable { Log.d("test", "Text onClick") }
             )
             Button(
-                onClick = { Log.d("test", "Button 1 onClick") }
+//                onClick = { Log.d("test", "Button 1 onClick") }
+                onClick = { button1Text = "Off" }
             ) {
                 Text(
-                    text = "Button 1",
+                    text = button1Text,
 //                    color = MyTVWhite,
 //                    modifier = modifier
                 )
             }
             Button(
-                onClick = { Log.d("test", "Button 2 onClick") }
+                onClick = { Log.d("test", "Button 2 onClick") },
+                contentPadding = ButtonDefaults.ButtonWithIconContentPadding
             ) {
-                Text(
-                    text = "Button 2",
+                Icon(
+                    Icons.Filled.Favorite,
+                    contentDescription = "Localized description",
+                    modifier = Modifier.size(ButtonDefaults.IconSize)
                 )
+                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                Text("Like")
             }
             Button(
                 onClick = { Log.d("test", "Button 3 onClick") }
