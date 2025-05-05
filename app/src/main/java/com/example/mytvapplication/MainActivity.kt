@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -45,7 +48,19 @@ import com.example.mytvapplication.ui.theme.Purple40
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.compose.rememberNavController
+import androidx.tv.material3.DrawerValue
+import androidx.tv.material3.ModalNavigationDrawer
+import androidx.tv.material3.OutlinedButton
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalTvMaterial3Api::class)
@@ -59,7 +74,13 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
 //                        .background(MyBlue)
                 ) {
-                    Greeting("Android")
+//                    Greeting("Android")
+                    val modifier: Modifier = Modifier
+
+                    MyNavigationDrawer(
+
+                    )
+
                 }
             }
         }
@@ -80,8 +101,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             Text(
                 text = "Hello $name!",
                 color = MyTVWhite,
-                modifier = modifier
-//                modifier = Modifier
+//                modifier = modifier
+                modifier = Modifier
 //                    .focusable()
 //                    .clickable { Log.d("test", "Text onClick") }
             )
@@ -132,12 +153,19 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     }
 }
 
+//@Preview(showBackground = true)
+//@Composable
+//fun GreetingPreview() {
+//    MyTVApplicationTheme {
+//        Greeting("Android")
+//    }
+//}
+
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    MyTVApplicationTheme {
-        Greeting("Android")
-    }
+fun DrawerPreview() {
+    MyNavigationDrawer()
+
 }
 
 @Composable
@@ -186,3 +214,63 @@ fun TvButton(
 //        color = color
 //    )
 //}
+
+@Composable
+fun NavigationItem(
+    drawerValue: DrawerValue,
+    color: ImageVector,
+    text: String,
+    selected: () -> Unit
+) {
+    OutlinedButton(
+        modifier = Modifier
+            .padding(16.dp)
+            .wrapContentWidth(),
+        onClick = { selected() }
+    ) {
+        Icon(
+            imageVector = color,
+            contentDescription = null,
+            modifier = Modifier.padding(end = 4.dp),
+            tint = Color.White
+        )
+        AnimatedVisibility(visible = drawerValue == DrawerValue.Open) {
+            Text(
+                modifier = Modifier.padding(end = 4.dp),
+                text = text,
+                softWrap = false,
+                textAlign = TextAlign.Start,
+                color = Color.White
+            )
+        }
+    }
+}
+
+@Composable
+fun MyNavigationDrawer(
+    modifier: Modifier = Modifier
+) {
+    val navController = rememberNavController()
+    ModalNavigationDrawer(
+        modifier = modifier.background(Color.Black),
+        drawerContent = {
+            Column(
+                modifier = Modifier.fillMaxHeight(),
+                verticalArrangement = Arrangement.Center
+            ) {
+                NavigationItem(it, Icons.Default.Home, "Home") {
+
+                }
+                NavigationItem(it, Icons.Default.Menu, "Movies") {
+
+                }
+                NavigationItem(it, Icons.Default.Email, "TV Shows") {
+
+                }
+                NavigationItem(it, Icons.Default.Settings, "Settings") {
+
+                }
+            }
+        }
+    ) { }
+}
