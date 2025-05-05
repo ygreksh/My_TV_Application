@@ -74,6 +74,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                 text = "Hello $name!",
                 color = MyTVWhite,
                 modifier = modifier
+//                modifier = Modifier
+//                    .focusable()
+//                    .clickable { Log.d("test", "Text onClick") }
             )
             Button(
                 onClick = { Log.d("test", "Button 1 onClick") }
@@ -154,3 +157,19 @@ fun TvButton(
         content = content,
     )
 }
+
+
+//@Composable
+//fun FocusingText() {
+//    var color by remember { mutableStateOf(Color.Black) }
+//    val focusRequester = remember { FocusRequester() }
+//    Text(
+//        modifier = Modifier
+//            .focusRequester(focusRequester)
+//            .onFocusChanged { color = if (it.isFocused) Color.Green else Color.Black }
+//            .focusable()
+//            .pointerInput(Unit) { detectTapGestures { focusRequester.requestFocus() } },
+//        text = "Text",
+//        color = color
+//    )
+//}
