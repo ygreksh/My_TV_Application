@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "My TV Application"
 include(":app")
- 
+include(":myfeature1")
