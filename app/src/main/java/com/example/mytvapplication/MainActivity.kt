@@ -80,7 +80,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             Text(
                 text = "Hello $name!",
                 color = MyTVWhite,
-                modifier = modifier-
+                modifier = modifier
 //                modifier = Modifier
 //                    .focusable()
 //                    .clickable { Log.d("test", "Text onClick") }
