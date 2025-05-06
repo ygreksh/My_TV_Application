@@ -105,7 +105,7 @@ class MainActivity : ComponentActivity() {
 //                modifier = modifier
 //            )
 //            Button(
-////                onClick = { Log.d("test", "Button 1 onClick") }
+////                onClick = { Log.wtf("test", "Button 1 onClick") }
 //                onClick = { button1Text = "Off" }
 //            ) {
 //                Text(
@@ -113,7 +113,7 @@ class MainActivity : ComponentActivity() {
 //                )
 //            }
 //            Button(
-//                onClick = { Log.d("test", "Button 2 onClick") },
+//                onClick = { Log.wtf("test", "Button 2 onClick") },
 //                contentPadding = ButtonDefaults.ButtonWithIconContentPadding
 //            ) {
 //                Icon(
@@ -125,7 +125,7 @@ class MainActivity : ComponentActivity() {
 //                Text("Like")
 //            }
 //            Button(
-//                onClick = { Log.d("test", "Button 3 onClick") }
+//                onClick = { Log.wtf("test", "Button 3 onClick") }
 //            ) {
 //                Text(
 //                    text = "Button 3",
@@ -133,7 +133,7 @@ class MainActivity : ComponentActivity() {
 //            }
 //            TvButton(
 //                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-//                onClick = { Log.d("test", "Button 3 onClick") },
+//                onClick = { Log.wtf("test", "Button 3 onClick") },
 //            ) {
 //                Text(
 ////                    modifier = Modifier.fillMaxWidth(),
@@ -249,27 +249,27 @@ fun MyNavigationDrawer(
     val navController = rememberNavController()
 //    navController.navigateToHome()
 
-//    ModalNavigationDrawer(
-//        modifier = modifier.background(Color.Black),
-//        drawerContent = {
-//            Log.d("test", "ModalNavigationDrawer drawerContent")
-//            Column(
-//                modifier = Modifier.fillMaxHeight(),
-//                verticalArrangement = Arrangement.Center
-//            ) {
-//                NavigationItem(it, Icons.Default.Home, "Home") {
-//                    Log.d("mainMenu", "onClick Home")
-//                }
-//                NavigationItem(it, Icons.Default.Menu, "Movies") {
-//                    Log.d("mainMenu", "onClick Movies")
-//                }
-//                NavigationItem(it, Icons.Default.Email, "TV Shows") {
-//                    Log.d("mainMenu", "onClick TV Shows")
-//                }
-//                NavigationItem(it, Icons.Default.Settings, "Settings") {
-//                    Log.d("mainMenu", "onClick Settings")
-//                }
-//            }
-//        }
-//    ) { }
+    ModalNavigationDrawer(
+        modifier = modifier.background(Color.Black),
+        drawerContent = {
+            Log.wtf("test", "ModalNavigationDrawer drawerContent")
+            Column(
+                modifier = Modifier.fillMaxHeight(),
+                verticalArrangement = Arrangement.Center
+            ) {
+                NavigationItem(it, Icons.Default.Home, "Home") {
+                    Log.wtf("mainMenu", "onClick Home")
+                }
+                NavigationItem(it, Icons.Default.Menu, "Movies") {
+                    Log.wtf("mainMenu", "onClick Movies")
+                }
+                NavigationItem(it, Icons.Default.Email, "TV Shows") {
+                    Log.wtf("mainMenu", "onClick TV Shows")
+                }
+                NavigationItem(it, Icons.Default.Settings, "Settings") {
+                    Log.wtf("mainMenu", "onClick Settings")
+                }
+            }
+        }
+    ) { }
 }
