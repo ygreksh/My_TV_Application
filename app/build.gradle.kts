@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -40,6 +41,10 @@ android {
 
 dependencies {
 
+//    implementation(projects.myfeature1)
+//    implementation(project(":myfeature1"))
+//    implementation(project(mapOf("path" to ":myfeature1")))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(platform(libs.androidx.compose.bom))
@@ -48,10 +53,12 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.tv.foundation)
     implementation(libs.androidx.tv.material)
+    implementation(libs.androidx.compose.material.iconsExtended)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
     androidTestImplementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.hilt.navigation.compose)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)

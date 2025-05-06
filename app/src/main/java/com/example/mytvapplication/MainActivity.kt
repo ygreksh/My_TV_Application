@@ -61,6 +61,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.DrawerValue
 import androidx.tv.material3.ModalNavigationDrawer
 import androidx.tv.material3.OutlinedButton
+//import com.example.mytvapplication.feature.navigateToHome
+//import com.example.myfeature1.ui.navigateToHome
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalTvMaterial3Api::class)
@@ -87,71 +89,65 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    var button1Text: String = remember { "on" }
-
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-//            .fillMaxSize()
-            .background(MyTVBlack)
-    ) {
-        Column {
-            Text(
-                text = "Hello $name!",
-                color = MyTVWhite,
+//@Composable
+//fun Greeting(name: String, modifier: Modifier = Modifier) {
+//    var button1Text: String = remember { "on" }
+//
+//    Box(
+//        contentAlignment = Alignment.Center,
+//        modifier = Modifier
+//            .background(MyTVBlack)
+//    ) {
+//        Column {
+//            Text(
+//                text = "Hello $name!",
+//                color = MyTVWhite,
 //                modifier = modifier
-                modifier = Modifier
-//                    .focusable()
-//                    .clickable { Log.d("test", "Text onClick") }
-            )
-            Button(
-//                onClick = { Log.d("test", "Button 1 onClick") }
-                onClick = { button1Text = "Off" }
-            ) {
-                Text(
-                    text = button1Text,
-//                    color = MyTVWhite,
-//                    modifier = modifier
-                )
-            }
-            Button(
-                onClick = { Log.d("test", "Button 2 onClick") },
-                contentPadding = ButtonDefaults.ButtonWithIconContentPadding
-            ) {
-                Icon(
-                    Icons.Filled.Favorite,
-                    contentDescription = "Localized description",
-                    modifier = Modifier.size(ButtonDefaults.IconSize)
-                )
-                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                Text("Like")
-            }
-            Button(
-                onClick = { Log.d("test", "Button 3 onClick") }
-            ) {
-                Text(
-                    text = "Button 3",
-                )
-            }
-            TvButton(
-                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-                onClick = { Log.d("test", "Button 3 onClick") },
-            ) {
-                Text(
-//                    modifier = Modifier.fillMaxWidth(),
-                    text = "LOGIN",
-                    style = TextStyle(
-                        fontFamily = FontFamily.SansSerif,
-                        fontWeight = FontWeight.Light,
-                        textAlign = TextAlign.Center,
-                    ),
-                )
-            }
-        }
-    }
-}
+//            )
+//            Button(
+////                onClick = { Log.d("test", "Button 1 onClick") }
+//                onClick = { button1Text = "Off" }
+//            ) {
+//                Text(
+//                    text = button1Text,
+//                )
+//            }
+//            Button(
+//                onClick = { Log.d("test", "Button 2 onClick") },
+//                contentPadding = ButtonDefaults.ButtonWithIconContentPadding
+//            ) {
+//                Icon(
+//                    Icons.Filled.Favorite,
+//                    contentDescription = "Localized description",
+//                    modifier = Modifier.size(ButtonDefaults.IconSize)
+//                )
+//                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+//                Text("Like")
+//            }
+//            Button(
+//                onClick = { Log.d("test", "Button 3 onClick") }
+//            ) {
+//                Text(
+//                    text = "Button 3",
+//                )
+//            }
+//            TvButton(
+//                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
+//                onClick = { Log.d("test", "Button 3 onClick") },
+//            ) {
+//                Text(
+////                    modifier = Modifier.fillMaxWidth(),
+//                    text = "LOGIN",
+//                    style = TextStyle(
+//                        fontFamily = FontFamily.SansSerif,
+//                        fontWeight = FontWeight.Light,
+//                        textAlign = TextAlign.Center,
+//                    ),
+//                )
+//            }
+//        }
+//    }
+//}
 
 //@Preview(showBackground = true)
 //@Composable
@@ -168,36 +164,36 @@ fun DrawerPreview() {
 
 }
 
-@Composable
-fun TvButton(
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    scale: ButtonScale = ButtonDefaults.scale(),
-    glow: ButtonGlow = ButtonDefaults.glow(),
-    shape: ButtonShape = ButtonDefaults.shape(),
-    colors: ButtonColors = ButtonDefaults.colors(),
-    tonalElevation: Dp = 0.dp,
-    border: ButtonBorder = ButtonDefaults.border(),
-    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    content: @Composable RowScope.() -> Unit,
-) {
-    Button(
-        onClick = onClick,
-        modifier = modifier,
-        enabled = enabled,
-        scale = scale,
-        glow = glow,
-        shape = shape,
-        colors = colors,
-        tonalElevation = tonalElevation,
-        border = border,
-        contentPadding = contentPadding,
-        interactionSource = interactionSource,
-        content = content,
-    )
-}
+//@Composable
+//fun TvButton(
+//    onClick: () -> Unit,
+//    modifier: Modifier = Modifier,
+//    enabled: Boolean = true,
+//    scale: ButtonScale = ButtonDefaults.scale(),
+//    glow: ButtonGlow = ButtonDefaults.glow(),
+//    shape: ButtonShape = ButtonDefaults.shape(),
+//    colors: ButtonColors = ButtonDefaults.colors(),
+//    tonalElevation: Dp = 0.dp,
+//    border: ButtonBorder = ButtonDefaults.border(),
+//    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
+//    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+//    content: @Composable RowScope.() -> Unit,
+//) {
+//    Button(
+//        onClick = onClick,
+//        modifier = modifier,
+//        enabled = enabled,
+//        scale = scale,
+//        glow = glow,
+//        shape = shape,
+//        colors = colors,
+//        tonalElevation = tonalElevation,
+//        border = border,
+//        contentPadding = contentPadding,
+//        interactionSource = interactionSource,
+//        content = content,
+//    )
+//}
 
 
 //@Composable
@@ -251,26 +247,29 @@ fun MyNavigationDrawer(
     modifier: Modifier = Modifier
 ) {
     val navController = rememberNavController()
-    ModalNavigationDrawer(
-        modifier = modifier.background(Color.Black),
-        drawerContent = {
-            Column(
-                modifier = Modifier.fillMaxHeight(),
-                verticalArrangement = Arrangement.Center
-            ) {
-                NavigationItem(it, Icons.Default.Home, "Home") {
+//    navController.navigateToHome()
 
-                }
-                NavigationItem(it, Icons.Default.Menu, "Movies") {
-
-                }
-                NavigationItem(it, Icons.Default.Email, "TV Shows") {
-
-                }
-                NavigationItem(it, Icons.Default.Settings, "Settings") {
-
-                }
-            }
-        }
-    ) { }
+//    ModalNavigationDrawer(
+//        modifier = modifier.background(Color.Black),
+//        drawerContent = {
+//            Log.d("test", "ModalNavigationDrawer drawerContent")
+//            Column(
+//                modifier = Modifier.fillMaxHeight(),
+//                verticalArrangement = Arrangement.Center
+//            ) {
+//                NavigationItem(it, Icons.Default.Home, "Home") {
+//                    Log.d("mainMenu", "onClick Home")
+//                }
+//                NavigationItem(it, Icons.Default.Menu, "Movies") {
+//                    Log.d("mainMenu", "onClick Movies")
+//                }
+//                NavigationItem(it, Icons.Default.Email, "TV Shows") {
+//                    Log.d("mainMenu", "onClick TV Shows")
+//                }
+//                NavigationItem(it, Icons.Default.Settings, "Settings") {
+//                    Log.d("mainMenu", "onClick Settings")
+//                }
+//            }
+//        }
+//    ) { }
 }
