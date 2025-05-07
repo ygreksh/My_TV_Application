@@ -22,7 +22,6 @@ fun NavGraphBuilder.HomeSection(
     navigation<HomeBaseRoute>(startDestination = HomeRoute) {
 //    navigation(startDestination = HomeRoute) {
         composable<HomeRoute>(
-//        composable(
             deepLinks = listOf(
                 navDeepLink {
                     /**
@@ -37,7 +36,6 @@ fun NavGraphBuilder.HomeSection(
                 },
             ),
         ) {
-//            HomeScreen(onTopicClick)
             HomeScreen()
         }
         topicDestination()

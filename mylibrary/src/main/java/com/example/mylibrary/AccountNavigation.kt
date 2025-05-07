@@ -13,22 +13,22 @@ data object AccountRoute // route to Account screen
 @Serializable
 data object AccountBaseRoute // route to base navigation graph
 
-fun NavController.navigateToAccount() = navigate(route = "Account")
+fun NavController.navigateToAccount() = navigate(route = "account")
 
 fun NavGraphBuilder.AccountSection(
     onTopicClick: (String) -> Unit,
     topicDestination: NavGraphBuilder.() -> Unit,
 ) {
-    navigation<AccountBaseRoute>(startDestination = AccountRoute) {
-        composable<AccountRoute>(
-            deepLinks = listOf(
-                navDeepLink {
-                    uriPattern = "__"
-                },
-            ),
-        ) {
-            AccountScreen()
-        }
-        topicDestination()
-    }
+//    navigation<AccountBaseRoute>(startDestination = AccountRoute) {
+//        composable<AccountRoute>(
+//            deepLinks = listOf(
+//                navDeepLink {
+//                    uriPattern = "___"
+//                },
+//            ),
+//        ) {
+//            AccountScreen()
+//        }
+//        topicDestination()
+//    }
 }

@@ -9,24 +9,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.tv.material3.Text
 
-@Composable
-fun AccountScreen() {
-    Greeting(name = "QQQQQ")
-}
+//@Composable
+//fun AccountScreen() {
+//    Greeting(name = "QQQQQ")
+//}
 
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Black)
-    ) {
-        Text(
-            text = "Hello $name!",
-            color = Color.White,
-            modifier = modifier
-        )
-    }
-}
+//@Composable
+//fun Greeting(name: String, modifier: Modifier = Modifier) {
+//    Box(
+//        contentAlignment = Alignment.Center,
+//        modifier = Modifier
+//            .fillMaxSize()
+//            .background(Color.Black)
+//    ) {
+//        Text(
+//            text = "Hello $name!",
+//            color = Color.White,
+//            modifier = modifier
+//        )
+//    }
+//}
