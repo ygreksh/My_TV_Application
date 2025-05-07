@@ -1,5 +1,6 @@
 package com.example.mylibrary
 
+import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
@@ -19,7 +20,8 @@ fun NavGraphBuilder.AccountSection(
     onTopicClick: (String) -> Unit,
     topicDestination: NavGraphBuilder.() -> Unit,
 ) {
-//    navigation<AccountBaseRoute>(startDestination = AccountRoute) {
+    navigation<AccountBaseRoute>(startDestination = AccountRoute) {
+        Log.d("test", "NavGraphBuilder.AccountSection")
 //        composable<AccountRoute>(
 //            deepLinks = listOf(
 //                navDeepLink {
@@ -28,7 +30,8 @@ fun NavGraphBuilder.AccountSection(
 //            ),
 //        ) {
 //            AccountScreen()
+//            Log.d("test", "NavGraphBuilder.AccountSection")
 //        }
 //        topicDestination()
-//    }
+    }
 }

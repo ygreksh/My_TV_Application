@@ -40,83 +40,83 @@ fun HomeScreen(
 fun MyNavigationDrawer(
     modifier: Modifier = Modifier
 ) {
-    val (discover, library) = remember { FocusRequester.createRefs() }
-    val currentRoute = remember { "home" }
-
-    ModalNavigationDrawer(
-        modifier = modifier.background(Color.Black),
-        drawerContent = {
-            val isClosed = it == DrawerValue.Closed
-            Column(
-                modifier = Modifier
-                    .padding(all = 5.dp)
-                    .focusProperties {
-                        enter = {
-                            when (currentRoute) {
-                                "home" -> discover
-                                "settings" -> library
-                                else -> FocusRequester.Default
-                            }
-                        }
-                    }
-                    .focusGroup()
-            ) {
-
-                NavigationDrawerItem(
-                    selected = isClosed && currentRoute == "account",
-                    onClick = {},
-                    leadingContent = { Icon(Icons.Default.Person, contentDescription = null) },
-                ) {
-                    Column {
-                        Text(text = "Name")
-                        Text(
-                            text = "Switch Account",
-                            style = MaterialTheme.typography.labelSmall
-                        )
-                    }
-                }
-                Spacer(modifier = Modifier.weight(1f))
-                NavigationDrawerItem(
-                    selected = isClosed && currentRoute == "home",
-                    onClick = {},
-                    leadingContent = {
-                        Icon(
-                            Icons.Default.Search,
-                            contentDescription = null
-                        )
-                    }
-                ) {
-                    Text(text = "Search")
-                }
-                NavigationDrawerItem(
-                    selected = isClosed && currentRoute == "search",
-                    onClick = {},
-                    leadingContent = {
-                        Icon(
-                            Icons.Default.Home,
-                            contentDescription = null
-                        )
-                    },
-                    modifier = Modifier.focusRequester(discover)
-                ) {
-                    Text(text = "Discover")
-                }
-                NavigationDrawerItem(
-                    selected = isClosed && currentRoute == "discover",
-                    onClick = {},
-                    leadingContent = {
-                        Icon(
-                            Icons.Default.VideoLibrary,
-                            contentDescription = null
-                        )
-                    },
-                    modifier = Modifier.focusRequester(library)
-                ) {
-                    Text(text = "Library")
-                }
-            }
-        }
-    ) { }
+//    val (discover, library) = remember { FocusRequester.createRefs() }
+//    val currentRoute = remember { "home" }
+//
+//    ModalNavigationDrawer(
+//        modifier = modifier.background(Color.Black),
+//        drawerContent = {
+//            val isClosed = it == DrawerValue.Closed
+//            Column(
+//                modifier = Modifier
+//                    .padding(all = 5.dp)
+//                    .focusProperties {
+//                        enter = {
+//                            when (currentRoute) {
+//                                "home" -> discover
+//                                "settings" -> library
+//                                else -> FocusRequester.Default
+//                            }
+//                        }
+//                    }
+//                    .focusGroup()
+//            ) {
+//
+//                NavigationDrawerItem(
+//                    selected = isClosed && currentRoute == "account",
+//                    onClick = {},
+//                    leadingContent = { Icon(Icons.Default.Person, contentDescription = null) },
+//                ) {
+//                    Column {
+//                        Text(text = "Name")
+//                        Text(
+//                            text = "Switch Account",
+//                            style = MaterialTheme.typography.labelSmall
+//                        )
+//                    }
+//                }
+//                Spacer(modifier = Modifier.weight(1f))
+//                NavigationDrawerItem(
+//                    selected = isClosed && currentRoute == "home",
+//                    onClick = {},
+//                    leadingContent = {
+//                        Icon(
+//                            Icons.Default.Search,
+//                            contentDescription = null
+//                        )
+//                    }
+//                ) {
+//                    Text(text = "Search")
+//                }
+//                NavigationDrawerItem(
+//                    selected = isClosed && currentRoute == "search",
+//                    onClick = {},
+//                    leadingContent = {
+//                        Icon(
+//                            Icons.Default.Home,
+//                            contentDescription = null
+//                        )
+//                    },
+//                    modifier = Modifier.focusRequester(discover)
+//                ) {
+//                    Text(text = "Discover")
+//                }
+//                NavigationDrawerItem(
+//                    selected = isClosed && currentRoute == "discover",
+//                    onClick = {},
+//                    leadingContent = {
+//                        Icon(
+//                            Icons.Default.VideoLibrary,
+//                            contentDescription = null
+//                        )
+//                    },
+//                    modifier = Modifier.focusRequester(library)
+//                ) {
+//                    Text(text = "Library")
+//                }
+//            }
+//        }
+//    ) { }
 }
 
 

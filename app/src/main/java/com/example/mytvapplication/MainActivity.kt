@@ -61,6 +61,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.DrawerValue
 import androidx.tv.material3.ModalNavigationDrawer
 import androidx.tv.material3.OutlinedButton
+import com.example.mylibrary.navigateToAccount
+
 //import com.example.mylibrary.navigateToAccount
 
 //import com.example.mytvapplication.feature.navigateToHome
@@ -134,7 +136,7 @@ fun NavigationItem(
 fun MyNavigationDrawer(
     modifier: Modifier = Modifier
 ) {
-//    val navController = rememberNavController()
+    val navController = rememberNavController()
 //    navController.navigateToHome()
 
     ModalNavigationDrawer(
@@ -156,7 +158,7 @@ fun MyNavigationDrawer(
                 }
                 NavigationItem(it, Icons.Default.Settings, "Settings") {
                     Log.wtf("mainMenu", "onClick Settings")
-//                    navController.navigateToAccount()
+                    navController.navigateToAccount()
                 }
             }
         }
