@@ -22,4 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "My TV Application"
 include(":app")
 include(":myfeature1")
-include(":mylibrary")
+//include(":mylibrary")

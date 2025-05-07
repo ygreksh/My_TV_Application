@@ -7,8 +7,6 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.navDeepLink
 import kotlinx.serialization.Serializable
 
-//class AccountNavigation {
-//}
 
 @Serializable
 data object AccountRoute // route to Account screen
@@ -28,21 +26,6 @@ fun NavGraphBuilder.AccountSection(
 //        composable(
             deepLinks = listOf(
                 navDeepLink {
-                    /**
-                     * This destination has a deep link that enables a specific news resource to be
-                     * opened from a notification (@see SystemTrayNotifier for more). The news resource
-                     * ID is sent in the URI rather than being modelled in the route type because it's
-                     * transient data (stored in SavedStateHandle) that is cleared after the user has
-                     * opened the news resource.
-                     */
-                    /**
-                     * This destination has a deep link that enables a specific news resource to be
-                     * opened from a notification (@see SystemTrayNotifier for more). The news resource
-                     * ID is sent in the URI rather than being modelled in the route type because it's
-                     * transient data (stored in SavedStateHandle) that is cleared after the user has
-                     * opened the news resource.
-                     */
-
 //                    uriPattern = DEEP_LINK_URI_PATTERN
                     uriPattern = "__"
                 },

@@ -90,73 +90,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-//@Composable
-//fun Greeting(name: String, modifier: Modifier = Modifier) {
-//    var button1Text: String = remember { "on" }
-//
-//    Box(
-//        contentAlignment = Alignment.Center,
-//        modifier = Modifier
-//            .background(MyTVBlack)
-//    ) {
-//        Column {
-//            Text(
-//                text = "Hello $name!",
-//                color = MyTVWhite,
-//                modifier = modifier
-//            )
-//            Button(
-////                onClick = { Log.wtf("test", "Button 1 onClick") }
-//                onClick = { button1Text = "Off" }
-//            ) {
-//                Text(
-//                    text = button1Text,
-//                )
-//            }
-//            Button(
-//                onClick = { Log.wtf("test", "Button 2 onClick") },
-//                contentPadding = ButtonDefaults.ButtonWithIconContentPadding
-//            ) {
-//                Icon(
-//                    Icons.Filled.Favorite,
-//                    contentDescription = "Localized description",
-//                    modifier = Modifier.size(ButtonDefaults.IconSize)
-//                )
-//                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-//                Text("Like")
-//            }
-//            Button(
-//                onClick = { Log.wtf("test", "Button 3 onClick") }
-//            ) {
-//                Text(
-//                    text = "Button 3",
-//                )
-//            }
-//            TvButton(
-//                modifier = Modifier.padding(start = 20.dp, end = 20.dp),
-//                onClick = { Log.wtf("test", "Button 3 onClick") },
-//            ) {
-//                Text(
-////                    modifier = Modifier.fillMaxWidth(),
-//                    text = "LOGIN",
-//                    style = TextStyle(
-//                        fontFamily = FontFamily.SansSerif,
-//                        fontWeight = FontWeight.Light,
-//                        textAlign = TextAlign.Center,
-//                    ),
-//                )
-//            }
-//        }
-//    }
-//}
-
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    MyTVApplicationTheme {
-//        Greeting("Android")
-//    }
-//}
 
 @Preview(showBackground = true)
 @Composable
@@ -165,52 +98,6 @@ fun DrawerPreview() {
 
 }
 
-//@Composable
-//fun TvButton(
-//    onClick: () -> Unit,
-//    modifier: Modifier = Modifier,
-//    enabled: Boolean = true,
-//    scale: ButtonScale = ButtonDefaults.scale(),
-//    glow: ButtonGlow = ButtonDefaults.glow(),
-//    shape: ButtonShape = ButtonDefaults.shape(),
-//    colors: ButtonColors = ButtonDefaults.colors(),
-//    tonalElevation: Dp = 0.dp,
-//    border: ButtonBorder = ButtonDefaults.border(),
-//    contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
-//    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-//    content: @Composable RowScope.() -> Unit,
-//) {
-//    Button(
-//        onClick = onClick,
-//        modifier = modifier,
-//        enabled = enabled,
-//        scale = scale,
-//        glow = glow,
-//        shape = shape,
-//        colors = colors,
-//        tonalElevation = tonalElevation,
-//        border = border,
-//        contentPadding = contentPadding,
-//        interactionSource = interactionSource,
-//        content = content,
-//    )
-//}
-
-
-//@Composable
-//fun FocusingText() {
-//    var color by remember { mutableStateOf(Color.Black) }
-//    val focusRequester = remember { FocusRequester() }
-//    Text(
-//        modifier = Modifier
-//            .focusRequester(focusRequester)
-//            .onFocusChanged { color = if (it.isFocused) Color.Green else Color.Black }
-//            .focusable()
-//            .pointerInput(Unit) { detectTapGestures { focusRequester.requestFocus() } },
-//        text = "Text",
-//        color = color
-//    )
-//}
 
 @Composable
 fun NavigationItem(
