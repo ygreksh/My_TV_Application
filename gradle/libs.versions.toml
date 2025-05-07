@@ -17,6 +17,7 @@ foundationLayoutAndroid = "1.8.0"
 navigationCompose = "2.8.9"
 androidxHiltNavigationCompose = "1.2.0"
 kotlinxSerializationJson = "1.8.0"
+foundationAndroid = "1.8.0"
 
 
 [libraries]
@@ -44,6 +45,7 @@ androidx-compose-material-iconsExtended = { module = "androidx.compose.material:
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+androidx-foundation-android = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "foundationAndroid" }
 
 
 [plugins]

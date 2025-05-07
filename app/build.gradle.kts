@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.mytvapplication"
-        minSdk = 21
+        minSdk = 24
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -44,6 +44,9 @@ dependencies {
 //    implementation(projects.myfeature1)
 //    implementation(project(":myfeature1"))
 //    implementation(project(mapOf("path" to ":myfeature1")))
+
+//    implementation(projects.mylibrary)
+//    implementation(project(":mylibrary"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
