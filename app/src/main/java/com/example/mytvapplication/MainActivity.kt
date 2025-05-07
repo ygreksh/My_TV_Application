@@ -74,19 +74,21 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTVApplicationTheme {
-                Surface(
-                    shape = RectangleShape,
-                    modifier = Modifier
-                        .fillMaxSize()
-//                        .background(MyBlue)
-                ) {
-//                    Greeting("Android")
+                RootNavGraph()
 
-                    MyNavigationDrawer(
-
-                    )
-
-                }
+//                Surface(
+//                    shape = RectangleShape,
+//                    modifier = Modifier
+//                        .fillMaxSize()
+////                        .background(MyBlue)
+//                ) {
+////                    Greeting("Android")
+//
+//                    MyNavigationDrawer(
+//
+//                    )
+//
+//                }
             }
         }
     }
@@ -158,7 +160,8 @@ fun MyNavigationDrawer(
                 }
                 NavigationItem(it, Icons.Default.Settings, "Settings") {
                     Log.wtf("mainMenu", "onClick Settings")
-                    navController.navigateToAccount()
+//                    navController.navigateToAccount()
+                    navController.navigate("account")
                 }
             }
         }

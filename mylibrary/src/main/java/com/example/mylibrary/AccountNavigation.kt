@@ -21,7 +21,7 @@ fun NavGraphBuilder.AccountSection(
     topicDestination: NavGraphBuilder.() -> Unit,
 ) {
     navigation<AccountBaseRoute>(startDestination = AccountRoute) {
-        Log.d("test", "NavGraphBuilder.AccountSection")
+        Log.wtf("test", "NavGraphBuilder.AccountSection")
 //        composable<AccountRoute>(
 //            deepLinks = listOf(
 //                navDeepLink {
@@ -30,7 +30,7 @@ fun NavGraphBuilder.AccountSection(
 //            ),
 //        ) {
 //            AccountScreen()
-//            Log.d("test", "NavGraphBuilder.AccountSection")
+//            Log.wtf("test", "NavGraphBuilder.AccountSection")
 //        }
 //        topicDestination()
     }
