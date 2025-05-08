@@ -27,7 +27,6 @@ import androidx.tv.material3.Icon
 import androidx.tv.material3.ModalNavigationDrawer
 import androidx.tv.material3.OutlinedButton
 import androidx.tv.material3.Text
-import com.example.mylibrary.navigateToAccount
 
 @Composable
 fun MainScreen(

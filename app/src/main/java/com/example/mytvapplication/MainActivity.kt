@@ -61,12 +61,6 @@ import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.DrawerValue
 import androidx.tv.material3.ModalNavigationDrawer
 import androidx.tv.material3.OutlinedButton
-import com.example.mylibrary.navigateToAccount
-
-//import com.example.mylibrary.navigateToAccount
-
-//import com.example.mytvapplication.feature.navigateToHome
-//import com.example.myfeature1.ui.navigateToHome
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalTvMaterial3Api::class)

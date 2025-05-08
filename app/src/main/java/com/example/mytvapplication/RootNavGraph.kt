@@ -8,8 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.feature_search.SearchScreen
-import com.example.mylibrary.AccountScreen
 
 @Composable
 fun RootNavGraph() {
@@ -35,8 +33,7 @@ fun RootNavGraph() {
             route = Screens.Search.route,
         ) {
             Log.wtf("test", "RootNavGraph: try start SearchScreen")
-            SearchScreen(rootNavController = rootNavController)
-//            Search2Screen(rootNavController = rootNavController)
+            Search2Screen(rootNavController = rootNavController)
         }
     }
 }
