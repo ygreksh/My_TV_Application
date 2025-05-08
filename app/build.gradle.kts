@@ -46,9 +46,7 @@ dependencies {
 //    implementation(project(mapOf("path" to ":myfeature1")))
 
 //    implementation(projects.mylibrary)
-    implementation(project(":mylibrary"))
-    implementation(project(":feature_search"))
-//    implementation(projects.feature_search)
+    //    implementation(projects.feature_search)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
