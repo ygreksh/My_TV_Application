@@ -1,5 +1,6 @@
 package com.example.mytvapplication
 
+import android.util.Log
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -27,13 +28,15 @@ fun RootNavGraph() {
         composable(
             route = Screens.Account.route,
         ) {
-            AccountScreen(rootNavController = rootNavController)
+//            AccountScreen(rootNavController = rootNavController)
         }
 
         composable(
             route = Screens.Search.route,
         ) {
-            SearchScreen(rootNavController = rootNavController)
+            Log.wtf("test", "RootNavGraph: try start SearchScreen")
+//            SearchScreen(rootNavController = rootNavController)
+            Search2Screen(rootNavController = rootNavController)
         }
     }
 }
