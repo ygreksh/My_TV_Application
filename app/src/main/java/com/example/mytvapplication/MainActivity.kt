@@ -95,75 +95,75 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun DrawerPreview() {
-    MyNavigationDrawer()
+//@Preview(showBackground = true)
+//@Composable
+//fun DrawerPreview() {
+//    MyNavigationDrawer()
+//
+//}
 
-}
 
+//@Composable
+//fun NavigationItem(
+//    drawerValue: DrawerValue,
+//    color: ImageVector,
+//    text: String,
+//    selected: () -> Unit
+//) {
+//    OutlinedButton(
+//        modifier = Modifier
+//            .padding(16.dp)
+//            .wrapContentWidth(),
+//        onClick = { selected() }
+//    ) {
+//        Icon(
+//            imageVector = color,
+//            contentDescription = null,
+//            modifier = Modifier.padding(end = 4.dp),
+//            tint = Color.White
+//        )
+//        AnimatedVisibility(visible = drawerValue == DrawerValue.Open) {
+//            Text(
+//                modifier = Modifier.padding(end = 4.dp),
+//                text = text,
+//                softWrap = false,
+//                textAlign = TextAlign.Start,
+//                color = Color.White
+//            )
+//        }
+//    }
+//}
 
-@Composable
-fun NavigationItem(
-    drawerValue: DrawerValue,
-    color: ImageVector,
-    text: String,
-    selected: () -> Unit
-) {
-    OutlinedButton(
-        modifier = Modifier
-            .padding(16.dp)
-            .wrapContentWidth(),
-        onClick = { selected() }
-    ) {
-        Icon(
-            imageVector = color,
-            contentDescription = null,
-            modifier = Modifier.padding(end = 4.dp),
-            tint = Color.White
-        )
-        AnimatedVisibility(visible = drawerValue == DrawerValue.Open) {
-            Text(
-                modifier = Modifier.padding(end = 4.dp),
-                text = text,
-                softWrap = false,
-                textAlign = TextAlign.Start,
-                color = Color.White
-            )
-        }
-    }
-}
-
-@Composable
-fun MyNavigationDrawer(
-    modifier: Modifier = Modifier
-) {
-    val navController = rememberNavController()
-//    navController.navigateToHome()
-
-    ModalNavigationDrawer(
-        modifier = modifier.background(Color.Black),
-        drawerContent = {
-            Log.wtf("test", "ModalNavigationDrawer drawerContent")
-            Column(
-                modifier = Modifier.fillMaxHeight(),
-                verticalArrangement = Arrangement.Center
-            ) {
-                NavigationItem(it, Icons.Default.Home, "Home") {
-                    Log.wtf("mainMenu", "onClick Home")
-                }
-                NavigationItem(it, Icons.Default.Menu, "Movies") {
-                    Log.wtf("mainMenu", "onClick Movies")
-                }
-                NavigationItem(it, Icons.Default.Email, "TV Shows") {
-                    Log.wtf("mainMenu", "onClick TV Shows")
-                }
-                NavigationItem(it, Icons.Default.Settings, "Settings") {
-                    Log.wtf("mainMenu", "onClick Settings")
-//                    navController.navigateToAccount()
-                    navController.navigate("account")
-                }
-            }
-        }
-    ) { }
-}
+//@Composable
+//fun MyNavigationDrawer(
+//    modifier: Modifier = Modifier
+//) {
+//    val navController = rememberNavController()
+////    navController.navigateToHome()
+//
+//    ModalNavigationDrawer(
+//        modifier = modifier.background(Color.Black),
+//        drawerContent = {
+//            Log.wtf("test", "ModalNavigationDrawer drawerContent")
+//            Column(
+//                modifier = Modifier.fillMaxHeight(),
+//                verticalArrangement = Arrangement.Center
+//            ) {
+//                NavigationItem(it, Icons.Default.Home, "Home") {
+//                    Log.wtf("mainMenu", "onClick Home")
+//                }
+//                NavigationItem(it, Icons.Default.Menu, "Movies") {
+//                    Log.wtf("mainMenu", "onClick Movies")
+//                }
+//                NavigationItem(it, Icons.Default.Email, "TV Shows") {
+//                    Log.wtf("mainMenu", "onClick TV Shows")
+//                }
+//                NavigationItem(it, Icons.Default.Settings, "Settings") {
+//                    Log.wtf("mainMenu", "onClick Settings")
+////                    navController.navigateToAccount()
+//                    navController.navigate("account")
+//                }
+//            }
+//        }
+//    ) { }
+//}

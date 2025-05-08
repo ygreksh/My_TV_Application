@@ -47,6 +47,7 @@ dependencies {
 
 //    implementation(projects.mylibrary)
     implementation(project(":mylibrary"))
+    implementation(project(":feature_search"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
