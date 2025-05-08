@@ -35,8 +35,8 @@ fun RootNavGraph() {
             route = Screens.Search.route,
         ) {
             Log.wtf("test", "RootNavGraph: try start SearchScreen")
-//            SearchScreen(rootNavController = rootNavController)
-            Search2Screen(rootNavController = rootNavController)
+            SearchScreen(rootNavController = rootNavController)
+//            Search2Screen(rootNavController = rootNavController)
         }
     }
 }
