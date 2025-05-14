@@ -12,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -37,7 +38,7 @@ fun Home2Screen(
 //            modifier = Modifier.focusable()
 //        )
         LaunchedEffect(Unit) {
-//            focusRequester.requestFocus()
+            focusRequester.requestFocus()
         }
 
         Column(
@@ -48,15 +49,20 @@ fun Home2Screen(
             )
 
             Button(
-                onClick = { Log.wtf("test", "HomeScreen Button1 onClick()")}
+                onClick = { Log.wtf("test", "HomeScreen Button1 onClick()") },
+                modifier = Modifier.focusRequester(focusRequester)
             ) {
+//                LaunchedEffect(Unit) {
+//                    focusRequester.requestFocus()
+//                }
+
                 Text(
                     text = "Button 1",
                     color = Color.White
                 )
             }
             Button(
-                onClick = { Log.wtf("test", "HomeScreen Button2 onClick()")}
+                onClick = { Log.wtf("test", "HomeScreen Button2 onClick()") }
             ) {
                 Text(
                     text = "Button 2",
@@ -64,7 +70,7 @@ fun Home2Screen(
                 )
             }
             Button(
-                onClick = { Log.wtf("test", "HomeScreen Button3 onClick()")}
+                onClick = { Log.wtf("test", "HomeScreen Button3 onClick()") }
             ) {
                 Text(
                     text = "Button 3",
