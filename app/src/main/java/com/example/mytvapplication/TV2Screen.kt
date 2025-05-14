@@ -1,7 +1,11 @@
 package com.example.mytvapplication
 
 import android.util.Log
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -14,8 +18,13 @@ fun TV2Screen(
 ) {
     Log.wtf("test", "start TV2Screen")
 
-    Text(
-        text = "TV2Screen",
-        color = Color.White
-    )
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Text(
+            text = "TV2Screen",
+            color = Color.White
+        )
+    }
 }

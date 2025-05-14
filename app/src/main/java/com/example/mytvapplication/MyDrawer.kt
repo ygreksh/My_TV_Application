@@ -23,6 +23,7 @@ fun MyDrawer(
     modifier: Modifier = Modifier,
     rootNavController: NavHostController,
     bottomBarNavController: NavHostController,
+    content: @Composable () -> Unit
 ) {
     ModalNavigationDrawer(
         modifier = modifier.background(Color.Black),
@@ -53,16 +54,7 @@ fun MyDrawer(
                     bottomBarNavController.navigate("settings")
                 }
             }
-        }
-    ) {
-        NavHost(
-            navController = bottomBarNavController,
-            startDestination = Screens.Main.route,
-        ) {
-            mainNavGraph(
-                rootNavController = rootNavController,
-                navController = bottomBarNavController
-            )
-        }
-    }
+        },
+        content = content
+    )
 }

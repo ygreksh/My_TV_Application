@@ -58,7 +58,17 @@ fun MainScreen(
         modifier = modifier,
         rootNavController = rootNavController,
         bottomBarNavController = bottomBarNavController
-    )
+    ) {
+        NavHost(
+            navController = bottomBarNavController,
+            startDestination = Screens.Main.route,
+        ) {
+            mainNavGraph(
+                rootNavController = rootNavController,
+                navController = bottomBarNavController
+            )
+        }
+    }
 
 //    ModalNavigationDrawer(
 //        modifier = modifier.background(Color.Black),
