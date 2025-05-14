@@ -23,6 +23,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.DrawerValue
 import androidx.tv.material3.Icon
@@ -33,12 +35,24 @@ import androidx.tv.material3.Text
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
-    rootNavController: NavController,
+    rootNavController: NavHostController,
 ) {
     Log.wtf("test", "start MainScreen")
+    val bottomBarNavController = rememberNavController()
+
 //    Text(text = "MainScreen")
 //    val navController = rememberNavController()
 //    navController.navigateToHome()
+
+//    NavHost(
+//        navController = bottomBarNavController,
+//        startDestination = Screens.Main.route,
+//    ) {
+//        mainNavGraph(
+//            rootNavController = rootNavController,
+//            navController = bottomBarNavController
+//        )
+//    }
 
     ModalNavigationDrawer(
         modifier = modifier.background(Color.Black),
@@ -50,27 +64,37 @@ fun MainScreen(
             ) {
                 NavigationItem(it, Icons.Default.Home, "Home") {
                     Log.wtf("mainMenu", "onClick Home")
-                    rootNavController.navigate("home")
+                    bottomBarNavController.navigate("home")
                 }
                 NavigationItem(it, Icons.Default.Movie, "Movies") {
                     Log.wtf("mainMenu", "onClick Movies")
-                    rootNavController.navigate("movies")
+                    bottomBarNavController.navigate("movies")
                 }
                 NavigationItem(it, Icons.Default.Monitor, "TV Shows") {
                     Log.wtf("mainMenu", "onClick TV Shows")
-                    rootNavController.navigate("tv")
+                    bottomBarNavController.navigate("tv")
                 }
                 NavigationItem(it, Icons.Default.Search, "Search") {
                     Log.wtf("mainMenu", "onClick Search")
-                    rootNavController.navigate("search")
+                    bottomBarNavController.navigate("search")
                 }
                 NavigationItem(it, Icons.Default.Settings, "Settings") {
                     Log.wtf("mainMenu", "onClick Settings")
-                    rootNavController.navigate("search")
+                    bottomBarNavController.navigate("settings")
                 }
             }
         }
-    ) { }
+    ) {
+        NavHost(
+            navController = bottomBarNavController,
+            startDestination = Screens.Main.route,
+        ) {
+            mainNavGraph(
+                rootNavController = rootNavController,
+                navController = bottomBarNavController
+            )
+        }
+    }
 }
 
 @Composable

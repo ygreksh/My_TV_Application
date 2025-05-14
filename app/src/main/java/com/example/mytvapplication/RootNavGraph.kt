@@ -10,8 +10,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun RootNavGraph() {
+fun RootNavGraph(
+
+) {
     val rootNavController = rememberNavController()
+    val bottomBarNavController = rememberNavController()
 
     NavHost(
         navController = rootNavController,
@@ -19,44 +22,61 @@ fun RootNavGraph() {
     ) {
         composable(
             route = Screens.Main.route,
+//            enterTransition = {
+//                fadeIn(animationSpec = tween(durationMillis = 100))
+//            },
+//            exitTransition = {
+//                fadeOut(animationSpec = tween(durationMillis = 100))
+//            }
         ) {
             MainScreen(rootNavController = rootNavController)
         }
 
-        composable(
-            route = Screens.Home.route,
-        ) {
-            Log.wtf("test", "RootNavGraph: try start HomeScreen")
-            Home2Screen(rootNavController = rootNavController)
-        }
+//        mainNavGraph(
+//            rootNavController = rootNavController,
+//            navController = bottomBarNavController
+//        )
 
-        composable(
-            route = Screens.Search.route,
-        ) {
-            Log.wtf("test", "RootNavGraph: try start SearchScreen")
-            Search2Screen(rootNavController = rootNavController)
-        }
-
-        composable(
-            route = Screens.TV.route,
-        ) {
-            Log.wtf("test", "RootNavGraph: try start TVScreen")
-            TV2Screen(rootNavController = rootNavController)
-        }
-
-        composable(
-            route = Screens.Movies.route,
-        ) {
-            Log.wtf("test", "RootNavGraph: try start MoviesScreen")
-            Movies2Screen(rootNavController = rootNavController)
-        }
-
-
-        composable(
-            route = Screens.Settings.route,
-        ) {
-            Log.wtf("test", "RootNavGraph: try start SettingsScreen")
-            Settings2Screen(rootNavController = rootNavController)
-        }
+//        composable(
+//            route = Screens.Main.route,
+//        ) {
+//            MainScreen(rootNavController = rootNavController)
+//        }
+//
+//        composable(
+//            route = Screens.Main.Home.route,
+//        ) {
+//            Log.wtf("test", "RootNavGraph: try start HomeScreen")
+//            Home2Screen(rootNavController = rootNavController)
+//        }
+//
+//        composable(
+//            route = Screens.Main.Search.route,
+//        ) {
+//            Log.wtf("test", "RootNavGraph: try start SearchScreen")
+//            Search2Screen(rootNavController = rootNavController)
+//        }
+//
+//        composable(
+//            route = Screens.Main.TV.route,
+//        ) {
+//            Log.wtf("test", "RootNavGraph: try start TVScreen")
+//            TV2Screen(rootNavController = rootNavController)
+//        }
+//
+//        composable(
+//            route = Screens.Main.Movies.route,
+//        ) {
+//            Log.wtf("test", "RootNavGraph: try start MoviesScreen")
+//            Movies2Screen(rootNavController = rootNavController)
+//        }
+//
+//
+//        composable(
+//            route = Screens.Main.Settings.route,
+//        ) {
+//            Log.wtf("test", "RootNavGraph: try start SettingsScreen")
+//            Settings2Screen(rootNavController = rootNavController)
+//        }
     }
 }
