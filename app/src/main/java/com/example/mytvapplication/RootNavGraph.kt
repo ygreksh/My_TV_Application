@@ -24,9 +24,10 @@ fun RootNavGraph() {
         }
 
         composable(
-            route = Screens.Account.route,
+            route = Screens.Home.route,
         ) {
-//            AccountScreen(rootNavController = rootNavController)
+            Log.wtf("test", "RootNavGraph: try start HomeScreen")
+            Home2Screen(rootNavController = rootNavController)
         }
 
         composable(
@@ -34,6 +35,28 @@ fun RootNavGraph() {
         ) {
             Log.wtf("test", "RootNavGraph: try start SearchScreen")
             Search2Screen(rootNavController = rootNavController)
+        }
+
+        composable(
+            route = Screens.TV.route,
+        ) {
+            Log.wtf("test", "RootNavGraph: try start TVScreen")
+            TV2Screen(rootNavController = rootNavController)
+        }
+
+        composable(
+            route = Screens.Movies.route,
+        ) {
+            Log.wtf("test", "RootNavGraph: try start MoviesScreen")
+            Movies2Screen(rootNavController = rootNavController)
+        }
+
+
+        composable(
+            route = Screens.Settings.route,
+        ) {
+            Log.wtf("test", "RootNavGraph: try start SettingsScreen")
+            Settings2Screen(rootNavController = rootNavController)
         }
     }
 }

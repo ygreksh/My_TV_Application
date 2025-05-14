@@ -12,6 +12,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Monitor
+import androidx.compose.material.icons.filled.Movie
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
@@ -48,19 +50,23 @@ fun MainScreen(
             ) {
                 NavigationItem(it, Icons.Default.Home, "Home") {
                     Log.wtf("mainMenu", "onClick Home")
+                    rootNavController.navigate("home")
+                }
+                NavigationItem(it, Icons.Default.Movie, "Movies") {
+                    Log.wtf("mainMenu", "onClick Movies")
+                    rootNavController.navigate("movies")
+                }
+                NavigationItem(it, Icons.Default.Monitor, "TV Shows") {
+                    Log.wtf("mainMenu", "onClick TV Shows")
+                    rootNavController.navigate("tv")
                 }
                 NavigationItem(it, Icons.Default.Search, "Search") {
                     Log.wtf("mainMenu", "onClick Search")
                     rootNavController.navigate("search")
                 }
-                NavigationItem(it, Icons.Default.Email, "TV Shows") {
-                    Log.wtf("mainMenu", "onClick TV Shows")
-                }
                 NavigationItem(it, Icons.Default.Settings, "Settings") {
                     Log.wtf("mainMenu", "onClick Settings")
-//                    navController.navigateToAccount()
-//                    navController.navigate("account")
-                    rootNavController.navigate("account")
+                    rootNavController.navigate("search")
                 }
             }
         }
