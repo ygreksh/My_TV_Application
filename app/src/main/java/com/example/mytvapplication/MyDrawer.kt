@@ -26,11 +26,12 @@ fun MyDrawer(
     content: @Composable () -> Unit
 ) {
     ModalNavigationDrawer(
-        modifier = modifier.background(Color.Black),
+//        modifier = modifier.background(Color.Black),
         drawerContent = {
             Log.wtf("test", "ModalNavigationDrawer drawerContent")
             Column(
-                modifier = Modifier.fillMaxHeight(),
+                modifier = Modifier.fillMaxHeight()
+                    .background(Color.Black),
                 verticalArrangement = Arrangement.Center
             ) {
                 NavigationItem(it, Icons.Default.Home, "Home") {
