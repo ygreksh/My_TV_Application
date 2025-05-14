@@ -54,47 +54,53 @@ fun MainScreen(
 //        )
 //    }
 
-    ModalNavigationDrawer(
-        modifier = modifier.background(Color.Black),
-        drawerContent = {
-            Log.wtf("test", "ModalNavigationDrawer drawerContent")
-            Column(
-                modifier = Modifier.fillMaxHeight(),
-                verticalArrangement = Arrangement.Center
-            ) {
-                NavigationItem(it, Icons.Default.Home, "Home") {
-                    Log.wtf("mainMenu", "onClick Home")
-                    bottomBarNavController.navigate("home")
-                }
-                NavigationItem(it, Icons.Default.Movie, "Movies") {
-                    Log.wtf("mainMenu", "onClick Movies")
-                    bottomBarNavController.navigate("movies")
-                }
-                NavigationItem(it, Icons.Default.Monitor, "TV Shows") {
-                    Log.wtf("mainMenu", "onClick TV Shows")
-                    bottomBarNavController.navigate("tv")
-                }
-                NavigationItem(it, Icons.Default.Search, "Search") {
-                    Log.wtf("mainMenu", "onClick Search")
-                    bottomBarNavController.navigate("search")
-                }
-                NavigationItem(it, Icons.Default.Settings, "Settings") {
-                    Log.wtf("mainMenu", "onClick Settings")
-                    bottomBarNavController.navigate("settings")
-                }
-            }
-        }
-    ) {
-        NavHost(
-            navController = bottomBarNavController,
-            startDestination = Screens.Main.route,
-        ) {
-            mainNavGraph(
-                rootNavController = rootNavController,
-                navController = bottomBarNavController
-            )
-        }
-    }
+    MyDrawer(
+        modifier = modifier,
+        rootNavController = rootNavController,
+        bottomBarNavController = bottomBarNavController
+    )
+
+//    ModalNavigationDrawer(
+//        modifier = modifier.background(Color.Black),
+//        drawerContent = {
+//            Log.wtf("test", "ModalNavigationDrawer drawerContent")
+//            Column(
+//                modifier = Modifier.fillMaxHeight(),
+//                verticalArrangement = Arrangement.Center
+//            ) {
+//                NavigationItem(it, Icons.Default.Home, "Home") {
+//                    Log.wtf("mainMenu", "onClick Home")
+//                    bottomBarNavController.navigate("home")
+//                }
+//                NavigationItem(it, Icons.Default.Movie, "Movies") {
+//                    Log.wtf("mainMenu", "onClick Movies")
+//                    bottomBarNavController.navigate("movies")
+//                }
+//                NavigationItem(it, Icons.Default.Monitor, "TV Shows") {
+//                    Log.wtf("mainMenu", "onClick TV Shows")
+//                    bottomBarNavController.navigate("tv")
+//                }
+//                NavigationItem(it, Icons.Default.Search, "Search") {
+//                    Log.wtf("mainMenu", "onClick Search")
+//                    bottomBarNavController.navigate("search")
+//                }
+//                NavigationItem(it, Icons.Default.Settings, "Settings") {
+//                    Log.wtf("mainMenu", "onClick Settings")
+//                    bottomBarNavController.navigate("settings")
+//                }
+//            }
+//        }
+//    ) {
+//        NavHost(
+//            navController = bottomBarNavController,
+//            startDestination = Screens.Main.route,
+//        ) {
+//            mainNavGraph(
+//                rootNavController = rootNavController,
+//                navController = bottomBarNavController
+//            )
+//        }
+//    }
 }
 
 @Composable
