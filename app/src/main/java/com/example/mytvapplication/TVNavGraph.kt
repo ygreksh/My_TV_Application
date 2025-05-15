@@ -22,7 +22,7 @@ fun NavGraphBuilder.tvNavGraph(
             route = Screens.Main.TV.Channels.route,
             enterTransition = {
                 slideInHorizontally (
-                    initialOffsetX = { fullWidth -> fullWidth },
+                    initialOffsetX = { fullWidth -> -fullWidth },
                     animationSpec = tween(durationMillis = 500)
                 )
             },
@@ -48,7 +48,7 @@ fun NavGraphBuilder.tvNavGraph(
             },
             exitTransition = {
                 slideOutHorizontally(
-                    targetOffsetX = { fullWidth -> -fullWidth },
+                    targetOffsetX = { fullWidth -> fullWidth },
                     animationSpec = tween(durationMillis = 500)
                 )
             }
