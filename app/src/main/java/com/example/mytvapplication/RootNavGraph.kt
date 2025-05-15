@@ -18,8 +18,13 @@ fun RootNavGraph(
 
     NavHost(
         navController = rootNavController,
-        startDestination = Screens.Main.route,
+//        startDestination = Screens.Main.route,
+        startDestination = Screens.Auth.route,
     ) {
+        authNavGraph(
+            rootNavController = rootNavController,
+            navController = bottomBarNavController
+        )
         composable(
             route = Screens.Main.route,
 //            enterTransition = {

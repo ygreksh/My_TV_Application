@@ -1,5 +1,6 @@
 package com.example.mytvapplication
 
+import android.util.Log
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -12,6 +13,7 @@ fun NavGraphBuilder.mainNavGraph(
     rootNavController: NavHostController,
     navController: NavHostController
 ) {
+    Log.wtf("test", "start NavGraphBuilder.mainNavGraph")
     navigation(
         route = Screens.Main.route,
         startDestination = Screens.Main.Home.route,

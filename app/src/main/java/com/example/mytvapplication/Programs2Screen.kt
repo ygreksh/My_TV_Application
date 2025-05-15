@@ -24,7 +24,7 @@ import androidx.tv.material3.Text
 
 @Composable
 fun Programs2Screen(
-//    rootNavController: NavController,
+    rootNavController: NavController,
     navController: NavHostController
 ) {
     Log.wtf("test", "start Programs2Screen")

@@ -54,6 +54,7 @@ fun NavGraphBuilder.tvNavGraph(
             }
         ) {
             Programs2Screen(
+                rootNavController = rootNavController,
                 navController = navController
             )
         }
