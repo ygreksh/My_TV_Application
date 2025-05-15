@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Monitor
@@ -15,7 +17,10 @@ import androidx.compose.material.icons.filled.Movie
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Brush
@@ -40,7 +45,9 @@ fun MyDrawer(
     bottomBarNavController: NavHostController,
     content: @Composable () -> Unit
 ) {
+    val menuList = listOf("home", "movies", "tv", "search", "settings")
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    var lastFocusedRow by remember { mutableStateOf(0) }
 
     ModalNavigationDrawer(
 //        modifier = modifier.background(Color.Black),
@@ -49,37 +56,27 @@ fun MyDrawer(
             Log.wtf("test", "ModalNavigationDrawer drawerContent")
             val focusRequester = remember { FocusRequester() }
 
-            Column(
-                modifier = Modifier.fillMaxHeight()
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxHeight()
                     .background(Color.Black),
                 verticalArrangement = Arrangement.Center
             ) {
-                NavigationItem(it, Icons.Default.Home, "Home") {
-                    Log.wtf("mainMenu", "onClick Home")
-                    bottomBarNavController.navigate("home")
-                }
-                NavigationItem(it, Icons.Default.Movie, "Movies") {
-                    Log.wtf("mainMenu", "onClick Movies")
-                    bottomBarNavController.navigate("movies")
-                }
-                NavigationItem(it, Icons.Default.Monitor, "TV Shows") {
-                    Log.wtf("mainMenu", "onClick TV Shows")
-                    bottomBarNavController.navigate("tv")
-                }
-                NavigationItem(it, Icons.Default.Search, "Search") {
-                    Log.wtf("mainMenu", "onClick Search")
-                    bottomBarNavController.navigate("search")
-                }
-                NavigationItem(it, Icons.Default.Settings, "Settings") {
-                    Log.wtf("mainMenu", "onClick Settings")
-                    bottomBarNavController.navigate("settings")
+
+                itemsIndexed(menuList) { index, menuItem ->
+                    NavigationItem(
+                        it, Icons.Default.Home, menuItem
+                    ) {
+                        Log.wtf("mainMenu", "onClick $menuItem")
+                        bottomBarNavController.navigate(menuItem)
+                    }
                 }
             }
         },
         scrimBrush = Brush.horizontalGradient(
             listOf(
 //                MaterialTheme.colorScheme.surface, Color.Transparent
-                Color.Black, Color.Transparent
+                Color.Black, Color.Black, Color.Transparent,Color.Transparent, Color.Transparent,
             ),
         ),
         content = content
