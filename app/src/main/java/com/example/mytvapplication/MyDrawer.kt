@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
@@ -26,9 +27,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.tv.material3.DrawerValue
 import androidx.tv.material3.Icon
+import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.ModalNavigationDrawer
 import androidx.tv.material3.OutlinedButton
 import androidx.tv.material3.Text
+import androidx.tv.material3.rememberDrawerState
 
 @Composable
 fun MyDrawer(
@@ -37,8 +40,11 @@ fun MyDrawer(
     bottomBarNavController: NavHostController,
     content: @Composable () -> Unit
 ) {
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+
     ModalNavigationDrawer(
 //        modifier = modifier.background(Color.Black),
+        drawerState = drawerState,
         drawerContent = {
             Log.wtf("test", "ModalNavigationDrawer drawerContent")
             val focusRequester = remember { FocusRequester() }
@@ -70,6 +76,12 @@ fun MyDrawer(
                 }
             }
         },
+        scrimBrush = Brush.horizontalGradient(
+            listOf(
+//                MaterialTheme.colorScheme.surface, Color.Transparent
+                Color.Black, Color.Transparent
+            ),
+        ),
         content = content
     )
 }
