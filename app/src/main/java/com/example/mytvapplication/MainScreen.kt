@@ -40,20 +40,6 @@ fun MainScreen(
     Log.wtf("test", "start MainScreen")
     val bottomBarNavController = rememberNavController()
 
-//    Text(text = "MainScreen")
-//    val navController = rememberNavController()
-//    navController.navigateToHome()
-
-//    NavHost(
-//        navController = bottomBarNavController,
-//        startDestination = Screens.Main.route,
-//    ) {
-//        mainNavGraph(
-//            rootNavController = rootNavController,
-//            navController = bottomBarNavController
-//        )
-//    }
-
     MyDrawer(
         modifier = modifier,
         rootNavController = rootNavController,
@@ -69,77 +55,5 @@ fun MainScreen(
             )
         }
     }
-
-//    ModalNavigationDrawer(
-//        modifier = modifier.background(Color.Black),
-//        drawerContent = {
-//            Log.wtf("test", "ModalNavigationDrawer drawerContent")
-//            Column(
-//                modifier = Modifier.fillMaxHeight(),
-//                verticalArrangement = Arrangement.Center
-//            ) {
-//                NavigationItem(it, Icons.Default.Home, "Home") {
-//                    Log.wtf("mainMenu", "onClick Home")
-//                    bottomBarNavController.navigate("home")
-//                }
-//                NavigationItem(it, Icons.Default.Movie, "Movies") {
-//                    Log.wtf("mainMenu", "onClick Movies")
-//                    bottomBarNavController.navigate("movies")
-//                }
-//                NavigationItem(it, Icons.Default.Monitor, "TV Shows") {
-//                    Log.wtf("mainMenu", "onClick TV Shows")
-//                    bottomBarNavController.navigate("tv")
-//                }
-//                NavigationItem(it, Icons.Default.Search, "Search") {
-//                    Log.wtf("mainMenu", "onClick Search")
-//                    bottomBarNavController.navigate("search")
-//                }
-//                NavigationItem(it, Icons.Default.Settings, "Settings") {
-//                    Log.wtf("mainMenu", "onClick Settings")
-//                    bottomBarNavController.navigate("settings")
-//                }
-//            }
-//        }
-//    ) {
-//        NavHost(
-//            navController = bottomBarNavController,
-//            startDestination = Screens.Main.route,
-//        ) {
-//            mainNavGraph(
-//                rootNavController = rootNavController,
-//                navController = bottomBarNavController
-//            )
-//        }
-//    }
 }
 
-@Composable
-fun NavigationItem(
-    drawerValue: DrawerValue,
-    color: ImageVector,
-    text: String,
-    selected: () -> Unit
-) {
-    OutlinedButton(
-        modifier = Modifier
-            .padding(16.dp)
-            .wrapContentWidth(),
-        onClick = { selected() }
-    ) {
-        Icon(
-            imageVector = color,
-            contentDescription = null,
-            modifier = Modifier.padding(end = 4.dp),
-            tint = Color.White
-        )
-        AnimatedVisibility(visible = drawerValue == DrawerValue.Open) {
-            Text(
-                modifier = Modifier.padding(end = 4.dp),
-                text = text,
-                softWrap = false,
-                textAlign = TextAlign.Start,
-                color = Color.White
-            )
-        }
-    }
-}
