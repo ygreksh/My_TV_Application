@@ -17,12 +17,14 @@ import androidx.compose.material.icons.filled.Movie
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -47,7 +49,7 @@ fun MyDrawer(
 ) {
     val menuList = listOf("home", "movies", "tv", "search", "settings")
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    var lastFocusedRow by remember { mutableStateOf(0) }
+    var currentFocuseditem by remember { mutableStateOf(0) }
 
     ModalNavigationDrawer(
 //        modifier = modifier.background(Color.Black),
@@ -65,9 +67,15 @@ fun MyDrawer(
 
                 itemsIndexed(menuList) { index, menuItem ->
                     NavigationItem(
-                        it, Icons.Default.Home, menuItem
+                        drawerValue = it,
+                        color = Icons.Default.Home,
+                        text = menuItem,
+                        isFocused = (index == currentFocuseditem),
+                        focusRequester = focusRequester
+//                        isFocused = false
                     ) {
-                        Log.wtf("mainMenu", "onClick $menuItem")
+                        Log.wtf("mainMenu", "onClick $menuItem, index = $index")
+                        currentFocuseditem = index
                         bottomBarNavController.navigate(menuItem)
                     }
                 }
@@ -88,10 +96,23 @@ fun NavigationItem(
     drawerValue: DrawerValue,
     color: ImageVector,
     text: String,
+    isFocused: Boolean = false,
+    focusRequester: FocusRequester,
     selected: () -> Unit
 ) {
+//    val focusRequester = remember { FocusRequester() }
+
+    Log.wtf("test", "draw NavigationItem $text, isFocused = $isFocused")
+
+//    LaunchedEffect(Unit) {
+//        if (isFocused) {
+//            Log.wtf("test", "set focus on $text")
+//            focusRequester.requestFocus()
+//        }
+//    }
     OutlinedButton(
         modifier = Modifier
+//            .focusRequester(focusRequester)
             .padding(16.dp)
             .wrapContentWidth(),
         onClick = { selected() }
