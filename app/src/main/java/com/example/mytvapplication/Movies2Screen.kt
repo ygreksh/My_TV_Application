@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -48,7 +49,7 @@ fun Movies2Screen(
             )
 
             Button(
-                onClick = { Log.wtf("test", "Button1 onClick()")}
+                onClick = { Log.wtf("test", "Button1 onClick()") }
             ) {
                 Text(
                     text = "Button 1",
@@ -56,19 +57,34 @@ fun Movies2Screen(
                 )
             }
 
-            LazyRow(
-            ) {
-                items(5) {
-                    MovieCard(
-                        movie = Movie(
-                            id = "1",
-                            posterUri = "https://commondatastorage.googleapis.com/android-tv/Sample%20videos/Zeitgeist/Zeitgeist%202010_%20Year%20in%20Review/card.jpg",
-                            name = "Batman",
-                            description = "Batman Serial description"
-                        )
+            LazyColumn {
+                items(3) {
+                    Text(
+                        text = "Row Title",
+                        color = Color.White
                     )
+
+                    LazyRow(
+                        modifier = Modifier
+                            .padding(20.dp)
+                    ) {
+                        items(5) {
+                            MovieCard(
+                                movie = Movie(
+                                    id = "1",
+                                    posterUri = "https://commondatastorage.googleapis.com/android-tv/Sample%20videos/Zeitgeist/Zeitgeist%202010_%20Year%20in%20Review/card.jpg",
+                                    name = "Batman",
+                                    description = "Batman Serial description"
+                                ),
+                                onClick = { Log.wtf("test", "MovieCard onClick() movie = ${it.name}")},
+//                                modifier = Modifier
+//                                    .padding(10.dp)
+                            )
+                        }
+                    }
                 }
             }
+
         }
     }
 }
