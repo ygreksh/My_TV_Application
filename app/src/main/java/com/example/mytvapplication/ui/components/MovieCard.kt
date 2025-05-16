@@ -1,4 +1,4 @@
-package com.example.mytvapplication
+package com.example.mytvapplication.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -21,6 +21,7 @@ import androidx.tv.material3.Card
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Text
 import coil.compose.AsyncImage
+import com.example.mytvapplication.R
 import com.example.mytvapplication.data.model.Movie
 
 @OptIn(ExperimentalTvMaterial3Api::class)

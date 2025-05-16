@@ -1,4 +1,4 @@
-package com.example.mytvapplication
+package com.example.mytvapplication.ui.screens.main.tv
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
@@ -21,6 +21,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
+import com.example.mytvapplication.ui.screens.Screens
 
 @Composable
 fun Programs2Screen(

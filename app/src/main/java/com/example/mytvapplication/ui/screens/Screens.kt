@@ -1,4 +1,4 @@
-package com.example.mytvapplication
+package com.example.mytvapplication.ui.screens
 
 sealed class Screens(val route: String) {
     data object Auth : Screens("auth") {

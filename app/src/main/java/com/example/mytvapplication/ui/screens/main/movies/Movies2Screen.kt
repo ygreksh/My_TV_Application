@@ -1,8 +1,6 @@
-package com.example.mytvapplication
+package com.example.mytvapplication.ui.screens.main.movies
 
-import android.R.attr.left
 import android.util.Log
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,12 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
 import com.example.mytvapplication.data.model.Movie
+import com.example.mytvapplication.ui.components.MovieCard
 
 @Composable
 fun Movies2Screen(
@@ -66,7 +64,7 @@ fun Movies2Screen(
 
                     LazyRow(
                         modifier = Modifier
-                            .padding(20.dp)
+//                            .padding(20.dp)
                     ) {
                         items(5) {
                             MovieCard(
@@ -76,7 +74,12 @@ fun Movies2Screen(
                                     name = "Batman",
                                     description = "Batman Serial description"
                                 ),
-                                onClick = { Log.wtf("test", "MovieCard onClick() movie = ${it.name}")},
+                                onClick = {
+                                    Log.wtf(
+                                        "test",
+                                        "MovieCard onClick() movie = ${it.name}"
+                                    )
+                                },
 //                                modifier = Modifier
 //                                    .padding(10.dp)
                             )

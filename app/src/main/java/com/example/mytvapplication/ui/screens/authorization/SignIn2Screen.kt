@@ -1,4 +1,4 @@
-package com.example.mytvapplication
+package com.example.mytvapplication.ui.screens.authorization
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
+import com.example.mytvapplication.ui.screens.Screens
 
 @Composable
 fun SignIn2Screen(

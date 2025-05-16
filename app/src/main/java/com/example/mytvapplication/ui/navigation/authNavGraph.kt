@@ -1,14 +1,11 @@
-package com.example.mytvapplication
+package com.example.mytvapplication.ui.navigation
 
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.animation.slideOutVertically
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.example.mytvapplication.ui.screens.Screens
+import com.example.mytvapplication.ui.screens.authorization.SignIn2Screen
 
 fun NavGraphBuilder.authNavGraph(
     rootNavController: NavHostController,

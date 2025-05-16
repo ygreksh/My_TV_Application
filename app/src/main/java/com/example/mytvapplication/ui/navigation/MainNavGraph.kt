@@ -1,13 +1,15 @@
-package com.example.mytvapplication
+package com.example.mytvapplication.ui.navigation
 
 import android.util.Log
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.example.mytvapplication.ui.screens.main.movies.Movies2Screen
+import com.example.mytvapplication.ui.screens.Screens
+import com.example.mytvapplication.ui.screens.main.home.Home2Screen
+import com.example.mytvapplication.ui.screens.main.search.Search2Screen
+import com.example.mytvapplication.ui.screens.main.settings.Settings2Screen
 
 fun NavGraphBuilder.mainNavGraph(
     rootNavController: NavHostController,
