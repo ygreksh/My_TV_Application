@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -22,6 +23,7 @@ fun MainScreen(
     val bottomBarNavController = rememberNavController()
     var currentselectedId by remember { mutableStateOf("home") }
     Log.wtf("test", "start MainScreen, currentselectedId = $currentselectedId")
+    val focusRequester = remember { FocusRequester() }
 
     MyDrawer(
         modifier = modifier,
@@ -29,6 +31,7 @@ fun MainScreen(
         bottomBarNavController = bottomBarNavController,
 //        selectedId = "home",
         selectedId = currentselectedId,
+        focusRequester = focusRequester,
         onSelectItem = { menuItem ->
             currentselectedId = menuItem
             Log.wtf("test", "MainScreen onSelectItem(): currentselectedId = $currentselectedId")

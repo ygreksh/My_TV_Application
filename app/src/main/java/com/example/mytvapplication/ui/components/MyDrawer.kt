@@ -12,9 +12,11 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -34,6 +36,7 @@ fun MyDrawer(
     rootNavController: NavHostController,
     bottomBarNavController: NavHostController,
     selectedId: String = "home",
+    focusRequester: FocusRequester,
     onSelectItem: (String) -> Unit,
     content: @Composable () -> Unit
 ) {
@@ -47,7 +50,7 @@ fun MyDrawer(
         drawerState = drawerState,
         drawerContent = {
             Log.wtf("test", "ModalNavigationDrawer drawerContent: selectedId = $selectedId")
-            val focusRequester = remember { FocusRequester() }
+//            val focusRequester = remember { FocusRequester() }
 
             LazyColumn(
                 modifier = Modifier
@@ -98,18 +101,26 @@ fun NavigationItem(
     onSelect: () -> Unit
 ) {
 //    val focusRequester = remember { FocusRequester() }
+    val navItemFocusRequester = remember { FocusRequester() }
 
-//    Log.wtf("test", "draw NavigationItem $text, isSelected = $isSelected")
+    val currItemId = menuItemId
+    Log.wtf("test", "draw NavigationItem $text, isSelected = $isSelected, drawerValue = $drawerValue")
 
-//    LaunchedEffect(Unit) {
-//        if (isFocused) {
-//            Log.wtf("test", "set focus on $text")
-//            focusRequester.requestFocus()
-//        }
+//    if (DrawerValue.Open)
+
+//    LaunchedEffect(true) {
+//        Log.wtf("test", "NavigationItem LaunchedEffect(Unit) isSelected = $isSelected, drawerValue = $drawerValue")
+        if (isSelected && drawerValue == DrawerValue.Open) {
+            Log.wtf("test", "set focus on $text")
+//            navItemFocusRequester.requestFocus()
+            focusRequester.requestFocus()
+        }
 //    }
+
     OutlinedButton(
         modifier = Modifier
-//            .focusRequester(focusRequester)
+            .focusRequester(if (isSelected && drawerValue == DrawerValue.Open) focusRequester else navItemFocusRequester)
+//            .focusRequester(navItemFocusRequester)
             .padding(16.dp)
             .wrapContentWidth(),
         onClick = { onSelect() }
