@@ -36,13 +36,6 @@ fun NavGraphBuilder.mainNavGraph(
             )
         }
 
-//        composable(
-//            route = Screens.Main.TV.route,
-//        ) {
-//            TV2Screen(
-//                navController = navController
-//            )
-//        }
         tvNavGraph(
             rootNavController = rootNavController,
             navController = navController
