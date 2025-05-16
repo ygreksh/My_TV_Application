@@ -12,10 +12,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Brush
@@ -36,17 +33,20 @@ fun MyDrawer(
     modifier: Modifier = Modifier,
     rootNavController: NavHostController,
     bottomBarNavController: NavHostController,
+    selectedId: String = "home",
+    onSelectItem: (String) -> Unit,
     content: @Composable () -> Unit
 ) {
     val menuList = listOf("home", "movies", "tv", "search", "settings")
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-    var currentFocuseditem by remember { mutableStateOf(0) }
+//    var currentFocuseditem by remember { mutableStateOf(0) }
+//    var currentselectedId by remember { mutableStateOf(selectedId) }
 
     ModalNavigationDrawer(
 //        modifier = modifier.background(Color.Black),
         drawerState = drawerState,
         drawerContent = {
-            Log.wtf("test", "ModalNavigationDrawer drawerContent")
+            Log.wtf("test", "ModalNavigationDrawer drawerContent: selectedId = $selectedId")
             val focusRequester = remember { FocusRequester() }
 
             LazyColumn(
@@ -61,12 +61,16 @@ fun MyDrawer(
                         drawerValue = it,
                         color = Icons.Default.Home,
                         text = menuItem,
-                        isFocused = (index == currentFocuseditem),
-                        focusRequester = focusRequester
+                        menuItemId = menuItem,
+//                        isFocused = (index == currentFocuseditem),
+                        isSelected = menuItem == selectedId,
+                        focusRequester = focusRequester,
 //                        isFocused = false
+//                        onSelect = onSelectItem()
                     ) {
                         Log.wtf("mainMenu", "onClick $menuItem, index = $index")
-                        currentFocuseditem = index
+//                        currentFocuseditem = index
+                        onSelectItem(menuItem)
                         bottomBarNavController.navigate(menuItem)
                     }
                 }
@@ -87,13 +91,15 @@ fun NavigationItem(
     drawerValue: DrawerValue,
     color: ImageVector,
     text: String,
+    menuItemId: String,
     isFocused: Boolean = false,
+    isSelected: Boolean = false,
     focusRequester: FocusRequester,
-    selected: () -> Unit
+    onSelect: () -> Unit
 ) {
 //    val focusRequester = remember { FocusRequester() }
 
-    Log.wtf("test", "draw NavigationItem $text, isFocused = $isFocused")
+//    Log.wtf("test", "draw NavigationItem $text, isSelected = $isSelected")
 
 //    LaunchedEffect(Unit) {
 //        if (isFocused) {
@@ -106,13 +112,13 @@ fun NavigationItem(
 //            .focusRequester(focusRequester)
             .padding(16.dp)
             .wrapContentWidth(),
-        onClick = { selected() }
+        onClick = { onSelect() }
     ) {
         Icon(
             imageVector = color,
             contentDescription = null,
             modifier = Modifier.padding(end = 4.dp),
-            tint = Color.White
+            tint = if (isSelected) Color.Red else Color.White
         )
         AnimatedVisibility(visible = drawerValue == DrawerValue.Open) {
             Text(
@@ -120,7 +126,7 @@ fun NavigationItem(
                 text = text,
                 softWrap = false,
                 textAlign = TextAlign.Start,
-                color = Color.White
+                color = if (isSelected) Color.Red else Color.White
             )
         }
     }
