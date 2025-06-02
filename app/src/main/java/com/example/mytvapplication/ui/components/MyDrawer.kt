@@ -113,7 +113,7 @@ fun NavigationItem(
         if (isSelected && drawerValue == DrawerValue.Open) {
             Log.wtf("test", "set focus on $text")
 //            navItemFocusRequester.requestFocus()
-            focusRequester.requestFocus()
+//            focusRequester.requestFocus()
         }
 //    }
 
