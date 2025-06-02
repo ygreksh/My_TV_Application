@@ -10,7 +10,10 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,9 +37,11 @@ fun Movies2Screen(
     Log.wtf("test", "start Movies2Screen")
 
 //    var movieListLast : List<Movie> = emptyList()
-    var movieListLast : List<Movie> = remember ()
+//    var movieListLast : List<Movie> = remember ()
 //    var movieListLast = remember (emptyList())
 //    var movieListLast : List<Movie> = remember (listOf())
+    var movieListLast by remember { mutableStateOf<List<Movie>>(emptyList()) }
+//    var movieListLast = remember { mutableStateOf<List<Movie>>(emptyList()) }
 
 
     val apiRepository = ApiRepositoryImpl()
