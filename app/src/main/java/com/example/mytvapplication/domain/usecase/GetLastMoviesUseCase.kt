@@ -5,7 +5,7 @@ import com.example.mytvapplication.data.model.Movie
 import com.example.mytvapplication.domain.repository.ApiRepository
 
 class GetLastMoviesUseCase(private val apiRepository: ApiRepository) {
-    fun execute(params: String) : List<Movie> {
+    fun execute() : List<Movie> {
 //        return listOf(
 //            Movie(id = "101", name = "Movie_101", posterUri = "", description = ""),
 //            Movie(id = "102", name = "Movie_102", posterUri = "", description = ""),
