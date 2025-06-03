@@ -1,8 +1,8 @@
 package com.example.mytvapplication.domain.repository
 
-import com.example.mytvapplication.data.model.Channel
-import com.example.mytvapplication.data.model.ChannelGroup
-import com.example.mytvapplication.data.model.Movie
+import com.example.mytvapplication.domain.model.Channel
+import com.example.mytvapplication.domain.model.ChannelGroup
+import com.example.mytvapplication.domain.model.Movie
 import com.example.mytvapplication.domain.model.LoginParams
 
 interface ApiRepository {

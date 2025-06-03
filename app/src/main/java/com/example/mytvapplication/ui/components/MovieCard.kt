@@ -22,7 +22,7 @@ import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Text
 import coil.compose.AsyncImage
 import com.example.mytvapplication.R
-import com.example.mytvapplication.data.model.Movie
+import com.example.mytvapplication.domain.model.Movie
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable

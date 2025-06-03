@@ -1,7 +1,6 @@
 package com.example.mytvapplication.domain.usecase
 
-import com.example.mytvapplication.data.model.Channel
-import com.example.mytvapplication.data.model.Movie
+import com.example.mytvapplication.domain.model.Channel
 import com.example.mytvapplication.domain.repository.ApiRepository
 
 class GetChannelsUseCase(private val apiRepository: ApiRepository) {

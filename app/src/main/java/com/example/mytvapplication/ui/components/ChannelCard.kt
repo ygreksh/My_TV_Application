@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,8 +22,7 @@ import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Text
 import coil.compose.AsyncImage
 import com.example.mytvapplication.R
-import com.example.mytvapplication.data.model.Channel
-import com.example.mytvapplication.data.model.Movie
+import com.example.mytvapplication.domain.model.Channel
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable

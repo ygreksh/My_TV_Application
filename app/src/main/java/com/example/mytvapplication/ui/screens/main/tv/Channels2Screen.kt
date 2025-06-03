@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -32,15 +31,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import androidx.tv.material3.Button
 import androidx.tv.material3.Text
-import com.example.mytvapplication.data.model.Channel
-import com.example.mytvapplication.data.model.ChannelGroup
-import com.example.mytvapplication.data.model.Movie
+import com.example.mytvapplication.domain.model.Channel
+import com.example.mytvapplication.domain.model.ChannelGroup
 import com.example.mytvapplication.data.repository.ApiRepositoryImpl
 import com.example.mytvapplication.domain.usecase.GetChannelsUseCase
 import com.example.mytvapplication.domain.usecase.GetGroupsUseCase
-import com.example.mytvapplication.domain.usecase.GetLastMoviesUseCase
 import com.example.mytvapplication.ui.components.ChannelCard
 import com.example.mytvapplication.ui.components.ChannelGroupItemCard
 import com.example.mytvapplication.ui.screens.Screens

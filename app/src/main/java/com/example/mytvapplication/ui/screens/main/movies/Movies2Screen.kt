@@ -23,9 +23,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
-import com.example.mytvapplication.data.model.Movie
+import com.example.mytvapplication.domain.model.Movie
 import com.example.mytvapplication.data.repository.ApiRepositoryImpl
-import com.example.mytvapplication.domain.repository.ApiRepository
 import com.example.mytvapplication.domain.usecase.GetLastMoviesUseCase
 import com.example.mytvapplication.ui.components.MovieCard
 

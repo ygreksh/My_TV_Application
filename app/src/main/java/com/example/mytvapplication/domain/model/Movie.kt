@@ -1,4 +1,4 @@
-package com.example.mytvapplication.data.model
+package com.example.mytvapplication.domain.model
 
 data class Movie(
     val id: String,
