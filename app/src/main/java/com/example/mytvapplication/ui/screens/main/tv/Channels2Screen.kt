@@ -50,6 +50,7 @@ fun Channels2Screen(
 ) {
     Log.wtf("test", "start Channels2Screen")
     val focusRequester = remember { FocusRequester() }
+    val emptyFocusRequester = FocusRequester()
 
     var groupList by remember { mutableStateOf<List<ChannelGroup>>(emptyList()) }
     var channelsList by remember { mutableStateOf<List<Channel>>(emptyList()) }
@@ -73,7 +74,7 @@ fun Channels2Screen(
         modifier = Modifier.fillMaxSize()
     ) {
         LaunchedEffect(Unit) {
-            focusRequester.requestFocus()
+//            focusRequester.requestFocus()
         }
         Column(
         ) {
@@ -86,14 +87,16 @@ fun Channels2Screen(
                 LazyColumn (
                     modifier = Modifier
                         .widthIn(max = 300.dp)
-                        .focusRequester(focusRequester)
+//                        .focusRequester(focusRequester)
                 ) {
                     itemsIndexed(groupList) { index, group ->
+//                        Log.wtf("test", "Channels2Screen itemsIndexed(): $index - ${group.name}")
+
                         ChannelGroupItemCard(
                             group = group,
-//                            modifier = Modifier
-//                                .focusRequester(if (index == 1) focusRequester else null)
-//                                .focusRequester(focusRequester)
+                            modifier = Modifier
+                                .focusRequester(if (index == 0) focusRequester else emptyFocusRequester),
+//                                .focusRequester(focusRequester),
                             onFocus = {
 //                                Log.wtf("test", "Channels2Screen ChannelGroupItemCard onFocus() ${group.name}")
                                 focusedGroup = group
