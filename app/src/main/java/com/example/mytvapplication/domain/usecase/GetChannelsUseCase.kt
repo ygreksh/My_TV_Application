@@ -5,7 +5,7 @@ import com.example.mytvapplication.data.model.Movie
 import com.example.mytvapplication.domain.repository.ApiRepository
 
 class GetChannelsUseCase(private val apiRepository: ApiRepository) {
-    fun execute(params: String) : List<Channel> {
+    fun execute() : List<Channel> {
 //        return listOf(
 //            Channel(id = "10", name = "Channel_1"),
 //            Channel(id = "20", name = "Channel_2"),

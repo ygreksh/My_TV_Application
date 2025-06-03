@@ -1,7 +1,7 @@
 package com.example.mytvapplication.data.model
 
-data class Channel(
+data class ChannelGroup(
     val id: String,
-    val icon: String?,
+//    val icon: String?,
     val name: String
 )
