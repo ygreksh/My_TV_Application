@@ -38,7 +38,8 @@ fun NavGraphBuilder.mainNavGraph(
 
         tvNavGraph(
             rootNavController = rootNavController,
-            navController = navController
+            navController = navController,
+            selectedGroupId = "22"
         )
 
         composable(

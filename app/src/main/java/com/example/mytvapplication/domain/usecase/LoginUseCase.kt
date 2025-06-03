@@ -1,13 +1,19 @@
 package com.example.mytvapplication.domain.usecase
 
-class LoginUseCase(val subscriptionId: String) {
-    fun execute(subscriptionId: String) : Boolean {
-        if (subscriptionId == "123456") {
+import com.example.mytvapplication.domain.repository.ApiRepository
 
-            return true
-        } else {
+class LoginUseCase(private val apiRepository: ApiRepository) {
+//    fun execute(subscriptionId: String) : Boolean {
+//        if (subscriptionId == "123456") {
+//
+//            return true
+//        } else {
+//
+//            return false
+//        }
+//    }
+fun execute() : Boolean {
 
-            return false
-        }
+        return true
     }
 }

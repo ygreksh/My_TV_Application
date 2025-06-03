@@ -37,6 +37,7 @@ fun MainScreen(
             Log.wtf("test", "MainScreen onSelectItem(): currentselectedId = $currentselectedId")
         }
     ) {
+//        Log.wtf("test", "MainScreen onSelectItem(): currentselectedId = $currentselectedId")
         NavHost(
             navController = bottomBarNavController,
             startDestination = Screens.Main.route,

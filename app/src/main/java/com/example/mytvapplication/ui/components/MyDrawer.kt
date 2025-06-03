@@ -40,6 +40,8 @@ fun MyDrawer(
     onSelectItem: (String) -> Unit,
     content: @Composable () -> Unit
 ) {
+    Log.wtf("test", "start MyDrawer")
+
     val menuList = listOf("home", "movies", "tv", "search", "settings")
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 //    var currentFocuseditem by remember { mutableStateOf(0) }
@@ -104,7 +106,7 @@ fun NavigationItem(
     val navItemFocusRequester = remember { FocusRequester() }
 
     val currItemId = menuItemId
-    Log.wtf("test", "draw NavigationItem $text, isSelected = $isSelected, drawerValue = $drawerValue")
+//    Log.wtf("test", "draw NavigationItem $text, isSelected = $isSelected, drawerValue = $drawerValue")
 
 //    if (DrawerValue.Open)
 

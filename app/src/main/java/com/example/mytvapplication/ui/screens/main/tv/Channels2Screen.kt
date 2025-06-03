@@ -20,6 +20,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyEventType
@@ -46,7 +48,8 @@ import com.example.mytvapplication.ui.screens.Screens
 @Composable
 fun Channels2Screen(
 //    rootNavController: NavController,
-    navController: NavHostController
+    navController: NavHostController,
+    selectedGroupId: String
 ) {
     Log.wtf("test", "start Channels2Screen")
     val focusRequester = remember { FocusRequester() }
@@ -54,7 +57,9 @@ fun Channels2Screen(
 
     var groupList by remember { mutableStateOf<List<ChannelGroup>>(emptyList()) }
     var channelsList by remember { mutableStateOf<List<Channel>>(emptyList()) }
-    var focusedGroup by remember { mutableStateOf<ChannelGroup?>(null) }
+//    var focusedGroup by remember { mutableStateOf<ChannelGroup?>(null) }
+//    var focusedGroupId by remember { mutableStateOf<String>("") }
+    var focusedGroupId by remember { mutableStateOf<String>(selectedGroupId) }
 
     val apiRepository = ApiRepositoryImpl()
     val getGroupsUseCase = GetGroupsUseCase(apiRepository = apiRepository)
@@ -65,29 +70,58 @@ fun Channels2Screen(
         groupList = getGroupsUseCase.execute()
     }
 
-    LaunchedEffect(focusedGroup) {
-        Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroup = ${focusedGroup?.name}")
+//    LaunchedEffect(focusedGroup) {
+//        Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroup = ${focusedGroup?.name}")
+//    }
+
+    LaunchedEffect(focusedGroupId) {
+        val focusedGroup = groupList.find { it.id == focusedGroupId }
+        Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroupId = ${focusedGroupId}")
+        if (focusedGroup != null) {
+            Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroup = ${focusedGroup.name}")
+        }
     }
 
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .onFocusChanged {
+                Log.wtf("test", "Channels2Screen Box() onFocusChanged() isFocused = ${it.isFocused}, hasFocus = ${it.hasFocus}, isCaptured = ${it.isCaptured}")
+                if (it.isFocused) {
+                    focusRequester.requestFocus()
+                }
+            }
+            .onFocusEvent {
+                Log.wtf("test", "Channels2Screen Box() onFocusEvent() isFocused = ${it.isFocused}, hasFocus = ${it.hasFocus}, isCaptured = ${it.isCaptured}")
+            }
     ) {
-        LaunchedEffect(Unit) {
-//            focusRequester.requestFocus()
-        }
-        Column(
-        ) {
+//        LaunchedEffect(Unit) {
+//            if (groupList.isNotEmpty()) {
+////                focusRequester.requestFocus()
+//            }
+//        }
+        Column() {
             Text(
                 text = "Channels2Screen",
                 color = Color.White
             )
 
             Row {
+
                 LazyColumn (
                     modifier = Modifier
                         .widthIn(max = 300.dp)
 //                        .focusRequester(focusRequester)
+                            .onFocusChanged {
+                        Log.wtf("test", "Channels2Screen LazyColumn() onFocusChanged() isFocused = ${it.isFocused}, hasFocus = ${it.hasFocus}, isCaptured = ${it.isCaptured}")
+                        if (it.isFocused) {
+                            focusRequester.requestFocus()
+                        }
+                    }
+                        .onFocusEvent {
+                            Log.wtf("test", "Channels2Screen LazyColumn() onFocusEvent() isFocused = ${it.isFocused}, hasFocus = ${it.hasFocus}, isCaptured = ${it.isCaptured}")
+                        }
                 ) {
                     itemsIndexed(groupList) { index, group ->
 //                        Log.wtf("test", "Channels2Screen itemsIndexed(): $index - ${group.name}")
@@ -99,7 +133,8 @@ fun Channels2Screen(
 //                                .focusRequester(focusRequester),
                             onFocus = {
 //                                Log.wtf("test", "Channels2Screen ChannelGroupItemCard onFocus() ${group.name}")
-                                focusedGroup = group
+//                                focusedGroup = group
+                                focusedGroupId = group.id
                             },
                             onClick = {
                                 Log.wtf("test", "Channels2Screen ChannelGroupItemCard onClick() ${group.name}")
@@ -107,6 +142,12 @@ fun Channels2Screen(
                         )
                     }
                 }
+//                LaunchedEffect(Unit) {
+//                    if (groupList.isNotEmpty()) {
+//                        focusRequester.requestFocus()
+//                    }
+//                }
+
                 LazyColumn(
                     modifier = Modifier
                         .onKeyEvent{
@@ -169,5 +210,8 @@ fun Channels2Screen(
 )
 @Composable
 fun Channels2ScreenPreview() {
-    Channels2Screen(navController = rememberNavController())
+    Channels2Screen(
+        navController = rememberNavController(),
+        selectedGroupId = ""
+    )
 }

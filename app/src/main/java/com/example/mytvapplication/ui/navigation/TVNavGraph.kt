@@ -13,7 +13,8 @@ import com.example.mytvapplication.ui.screens.main.tv.Programs2Screen
 
 fun NavGraphBuilder.tvNavGraph(
     rootNavController: NavHostController,
-    navController: NavHostController
+    navController: NavHostController,
+    selectedGroupId: String
 ) {
     navigation(
         route = Screens.Main.TV.route,
@@ -35,7 +36,8 @@ fun NavGraphBuilder.tvNavGraph(
             }
         ) {
             Channels2Screen(
-                navController = navController
+                navController = navController,
+                selectedGroupId = selectedGroupId
             )
         }
 

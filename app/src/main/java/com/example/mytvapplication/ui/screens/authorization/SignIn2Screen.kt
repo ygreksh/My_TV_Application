@@ -10,6 +10,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
+import com.example.mytvapplication.data.repository.ApiRepositoryImpl
+import com.example.mytvapplication.domain.usecase.GetGroupsUseCase
+import com.example.mytvapplication.domain.usecase.LoginUseCase
 import com.example.mytvapplication.ui.screens.Screens
 
 @Composable
@@ -19,6 +22,9 @@ fun SignIn2Screen(
 ) {
     Log.wtf("test", "start SignIn2Screen")
 
+    val apiRepository = ApiRepositoryImpl()
+    val loginUseCase = LoginUseCase(apiRepository = apiRepository)
+
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxSize()
@@ -26,7 +32,11 @@ fun SignIn2Screen(
         Button(
             onClick = {
                 Log.wtf("test", "HomeScreen Login onClick()")
-                rootNavController.navigate(Screens.Main.route)
+//                rootNavController.navigate(Screens.Main.route)
+                val result = loginUseCase.execute()
+                if (result) {
+                    rootNavController.navigate(Screens.Main.route)
+                }
             }
         ) {
             Text(
