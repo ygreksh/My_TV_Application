@@ -73,7 +73,7 @@ fun Channels2Screen(
         modifier = Modifier.fillMaxSize()
     ) {
         LaunchedEffect(Unit) {
-//            focusRequester.requestFocus()
+            focusRequester.requestFocus()
         }
         Column(
         ) {
@@ -86,6 +86,7 @@ fun Channels2Screen(
                 LazyColumn (
                     modifier = Modifier
                         .widthIn(max = 300.dp)
+                        .focusRequester(focusRequester)
                 ) {
                     itemsIndexed(groupList) { index, group ->
                         ChannelGroupItemCard(
@@ -103,7 +104,21 @@ fun Channels2Screen(
                         )
                     }
                 }
-                LazyColumn {
+                LazyColumn(
+                    modifier = Modifier
+                        .onKeyEvent{
+                            if(
+                                it.type == KeyEventType.KeyDown &&
+                                it.key == Key.DirectionRight
+                            ) {
+                                Log.wtf("test", "Channel1 click RIGHT")
+                                navController.navigate(Screens.Main.TV.Programs.route)
+                                true
+                            } else {
+                                false
+                            }
+                        }
+                ) {
                     items(5) {
                         ChannelCard(
                             channel = Channel(
