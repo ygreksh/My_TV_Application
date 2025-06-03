@@ -53,6 +53,7 @@ fun Channels2Screen(
 
     var groupList by remember { mutableStateOf<List<ChannelGroup>>(emptyList()) }
     var channelsList by remember { mutableStateOf<List<Channel>>(emptyList()) }
+    var focusedGroup by remember { mutableStateOf<ChannelGroup?>(null) }
 
     val apiRepository = ApiRepositoryImpl()
     val getGroupsUseCase = GetGroupsUseCase(apiRepository = apiRepository)
@@ -61,6 +62,10 @@ fun Channels2Screen(
     LaunchedEffect(Unit) {
         channelsList = getChannelsUseCase.execute()
         groupList = getGroupsUseCase.execute()
+    }
+
+    LaunchedEffect(focusedGroup) {
+        Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroup = ${focusedGroup?.name}")
     }
 
     Box(
@@ -85,9 +90,16 @@ fun Channels2Screen(
                     itemsIndexed(groupList) { index, group ->
                         ChannelGroupItemCard(
                             group = group,
-                            modifier = Modifier
+//                            modifier = Modifier
 //                                .focusRequester(if (index == 1) focusRequester else null)
 //                                .focusRequester(focusRequester)
+                            onFocus = {
+//                                Log.wtf("test", "Channels2Screen ChannelGroupItemCard onFocus() ${group.name}")
+                                focusedGroup = group
+                            },
+                            onClick = {
+                                Log.wtf("test", "Channels2Screen ChannelGroupItemCard onClick() ${group.name}")
+                            }
                         )
                     }
                 }

@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -32,6 +33,7 @@ import com.example.mytvapplication.data.model.Movie
 fun ChannelGroupItemCard(
     group: ChannelGroup,
     modifier: Modifier = Modifier,
+    onFocus: (ChannelGroup) -> Unit = {},
     onClick: (ChannelGroup) -> Unit = {}
 ) {
     Card(
@@ -42,6 +44,7 @@ fun ChannelGroupItemCard(
 //            .aspectRatio(16f / 9f)
 //            .background(Color.DarkGray)
             .padding(10.dp)
+            .onFocusChanged { if (it.isFocused) onFocus(group) }
         ,
     ) {
         Box(
