@@ -8,7 +8,6 @@ import com.example.mytvapplication.domain.repository.ApiRepository
 
 class ApiRepositoryImpl : ApiRepository{
     override fun login(params: LoginParams) : Boolean {
-//        TODO("Not yet implemented")
         return true
     }
 
