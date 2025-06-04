@@ -7,8 +7,9 @@ import com.example.mytvapplication.domain.model.LoginParams
 import com.example.mytvapplication.domain.repository.ApiRepository
 
 class ApiRepositoryImpl : ApiRepository{
-    override fun login(params: LoginParams) {
-        TODO("Not yet implemented")
+    override fun login(params: LoginParams) : Boolean {
+//        TODO("Not yet implemented")
+        return true
     }
 
     override fun getChannels() : List<Channel> {

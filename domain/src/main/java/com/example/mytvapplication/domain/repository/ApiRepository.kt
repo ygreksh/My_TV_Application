@@ -6,7 +6,7 @@ import com.example.mytvapplication.domain.model.Movie
 import com.example.mytvapplication.domain.model.LoginParams
 
 interface ApiRepository {
-    fun login(params: LoginParams)
+    fun login(params: LoginParams) : Boolean
     fun getGroups() : List<ChannelGroup>
     fun getChannels() : List<Channel>
     fun getLastMovies() : List<Movie>
