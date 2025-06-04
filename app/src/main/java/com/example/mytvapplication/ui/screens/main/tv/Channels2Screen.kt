@@ -52,7 +52,7 @@ fun Channels2Screen(
     val emptyFocusRequester = FocusRequester()
 
     var groupList by remember { mutableStateOf<List<ChannelGroup>>(emptyList()) }
-    var channelsList by remember { mutableStateOf<List<Channel>>(emptyList()) }
+    var channelList by remember { mutableStateOf<List<Channel>>(emptyList()) }
 //    var focusedGroup by remember { mutableStateOf<ChannelGroup?>(null) }
 //    var focusedGroupId by remember { mutableStateOf<String>("") }
     var focusedGroupId by remember { mutableStateOf<String>(selectedGroupId) }
@@ -64,7 +64,7 @@ fun Channels2Screen(
         GetChannelsUseCase(apiRepository = apiRepository)
 
     LaunchedEffect(Unit) {
-        channelsList = getChannelsUseCase.execute()
+        channelList = getChannelsUseCase.execute()
         groupList = getGroupsUseCase.execute()
     }
 
@@ -161,14 +161,10 @@ fun Channels2Screen(
                             }
                         }
                 ) {
-                    items(5) {
+                    itemsIndexed(channelList) { index, channel ->
                         ChannelCard(
-                            channel = Channel(
-                                id = "1",
-                                icon = "https://commondatastorage.googleapis.com/android-tv/Sample%20videos/Zeitgeist/Zeitgeist%202010_%20Year%20in%20Review/card.jpg",
-                                name = "Channel_11",
+                            channel = channel
                             )
-                        )
                     }
                 }
             }
