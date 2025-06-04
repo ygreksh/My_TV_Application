@@ -44,7 +44,8 @@ fun Movies2Screen(
 
 
     val apiRepository = ApiRepositoryImpl()
-    val getLastMoviesUseCase = GetLastMoviesUseCase(apiRepository = apiRepository)
+    val getLastMoviesUseCase =
+        GetLastMoviesUseCase(apiRepository = apiRepository)
 
     LaunchedEffect(Unit) {
         movieListLast = getLastMoviesUseCase.execute()

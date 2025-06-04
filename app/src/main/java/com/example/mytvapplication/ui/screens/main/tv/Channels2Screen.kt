@@ -58,8 +58,10 @@ fun Channels2Screen(
     var focusedGroupId by remember { mutableStateOf<String>(selectedGroupId) }
 
     val apiRepository = ApiRepositoryImpl()
-    val getGroupsUseCase = GetGroupsUseCase(apiRepository = apiRepository)
-    val getChannelsUseCase = GetChannelsUseCase(apiRepository = apiRepository)
+    val getGroupsUseCase =
+        GetGroupsUseCase(apiRepository = apiRepository)
+    val getChannelsUseCase =
+        GetChannelsUseCase(apiRepository = apiRepository)
 
     LaunchedEffect(Unit) {
         channelsList = getChannelsUseCase.execute()

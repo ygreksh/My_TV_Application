@@ -48,6 +48,9 @@ dependencies {
 //    implementation(projects.mylibrary)
     //    implementation(projects.feature_search)
 
+    implementation(project(path = ":domain"))
+    implementation(project(path = ":data"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(platform(libs.androidx.compose.bom))
