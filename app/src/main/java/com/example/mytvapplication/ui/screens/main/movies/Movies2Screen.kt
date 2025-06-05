@@ -24,7 +24,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
 import com.example.mytvapplication.domain.model.Movie
-import com.example.mytvapplication.data.repository.ApiRepositoryImpl
+//import com.example.mytvapplication.data.repository.ApiRepositoryImpl
+import com.example.mytvapplication.data.repository.MoviesRepositoryImpl
 import com.example.mytvapplication.domain.usecase.GetLastMoviesUseCase
 import com.example.mytvapplication.ui.components.MovieCard
 
@@ -43,9 +44,11 @@ fun Movies2Screen(
 //    var movieListLast = remember { mutableStateOf<List<Movie>>(emptyList()) }
 
 
-    val apiRepository = ApiRepositoryImpl()
+//    val apiRepository = ApiRepositoryImpl()
+    val moviesRepository = MoviesRepositoryImpl()
     val getLastMoviesUseCase =
-        GetLastMoviesUseCase(apiRepository = apiRepository)
+//        GetLastMoviesUseCase(apiRepository = apiRepository)
+        GetLastMoviesUseCase(moviesRepository = moviesRepository)
 
     LaunchedEffect(Unit) {
         movieListLast = getLastMoviesUseCase.execute()

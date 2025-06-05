@@ -1,7 +1,6 @@
 package com.example.mytvapplication.domain.model
 
-data class ChannelGroup(
+class Genre (
     val id: String,
-//    val icon: String?,
     val name: String
 )

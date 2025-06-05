@@ -33,8 +33,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.Text
 import com.example.mytvapplication.domain.model.Channel
-import com.example.mytvapplication.domain.model.ChannelGroup
-import com.example.mytvapplication.data.repository.ApiRepositoryImpl
+import com.example.mytvapplication.domain.model.Group
+//import com.example.mytvapplication.data.repository.ApiRepositoryImpl
+import com.example.mytvapplication.data.repository.TVRepositoryImpl
 import com.example.mytvapplication.domain.usecase.GetChannelsUseCase
 import com.example.mytvapplication.domain.usecase.GetGroupsUseCase
 import com.example.mytvapplication.ui.components.ChannelCard
@@ -51,17 +52,20 @@ fun Channels2Screen(
     val focusRequester = remember { FocusRequester() }
     val emptyFocusRequester = FocusRequester()
 
-    var groupList by remember { mutableStateOf<List<ChannelGroup>>(emptyList()) }
+    var groupList by remember { mutableStateOf<List<Group>>(emptyList()) }
     var channelList by remember { mutableStateOf<List<Channel>>(emptyList()) }
 //    var focusedGroup by remember { mutableStateOf<ChannelGroup?>(null) }
 //    var focusedGroupId by remember { mutableStateOf<String>("") }
     var focusedGroupId by remember { mutableStateOf<String>(selectedGroupId) }
 
-    val apiRepository = ApiRepositoryImpl()
+//    val apiRepository = ApiRepositoryImpl()
+    val tvRepository = TVRepositoryImpl()
     val getGroupsUseCase =
-        GetGroupsUseCase(apiRepository = apiRepository)
+//        GetGroupsUseCase(apiRepository = apiRepository)
+        GetGroupsUseCase(tvRepository = tvRepository)
     val getChannelsUseCase =
-        GetChannelsUseCase(apiRepository = apiRepository)
+//        GetChannelsUseCase(apiRepository = apiRepository)
+        GetChannelsUseCase(tvRepository = tvRepository)
 
     LaunchedEffect(Unit) {
         channelList = getChannelsUseCase.execute()

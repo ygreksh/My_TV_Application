@@ -16,15 +16,15 @@ import androidx.compose.ui.unit.sp
 import androidx.tv.material3.Card
 import androidx.tv.material3.ExperimentalTvMaterial3Api
 import androidx.tv.material3.Text
-import com.example.mytvapplication.domain.model.ChannelGroup
+import com.example.mytvapplication.domain.model.Group
 
 @OptIn(ExperimentalTvMaterial3Api::class)
 @Composable
 fun ChannelGroupItemCard(
-    group: ChannelGroup,
+    group: Group,
     modifier: Modifier = Modifier,
-    onFocus: (ChannelGroup) -> Unit = {},
-    onClick: (ChannelGroup) -> Unit = {}
+    onFocus: (Group) -> Unit = {},
+    onClick: (Group) -> Unit = {}
 ) {
     Card(
         onClick = { onClick(group) },
@@ -59,7 +59,7 @@ fun ChannelGroupItemCard(
 @Composable
 fun ChannelGroupItemCardPreview() {
     ChannelGroupItemCard(
-        group = ChannelGroup(
+        group = Group(
             id = "1",
             name = "Channel_11",
         )
