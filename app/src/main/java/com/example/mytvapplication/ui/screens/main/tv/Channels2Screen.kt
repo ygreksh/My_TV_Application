@@ -54,27 +54,18 @@ fun Channels2Screen(
 
     var groupList by remember { mutableStateOf<List<Group>>(emptyList()) }
     var channelList by remember { mutableStateOf<List<Channel>>(emptyList()) }
-//    var focusedGroup by remember { mutableStateOf<ChannelGroup?>(null) }
-//    var focusedGroupId by remember { mutableStateOf<String>("") }
     var focusedGroupId by remember { mutableStateOf<String>(selectedGroupId) }
 
-//    val apiRepository = ApiRepositoryImpl()
     val tvRepository = TVRepositoryImpl()
     val getGroupsUseCase =
-//        GetGroupsUseCase(apiRepository = apiRepository)
         GetGroupsUseCase(tvRepository = tvRepository)
     val getChannelsUseCase =
-//        GetChannelsUseCase(apiRepository = apiRepository)
         GetChannelsUseCase(tvRepository = tvRepository)
 
     LaunchedEffect(Unit) {
         channelList = getChannelsUseCase.execute()
         groupList = getGroupsUseCase.execute()
     }
-
-//    LaunchedEffect(focusedGroup) {
-//        Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroup = ${focusedGroup?.name}")
-//    }
 
     LaunchedEffect(focusedGroupId) {
         val focusedGroup = groupList.find { it.id == focusedGroupId }
