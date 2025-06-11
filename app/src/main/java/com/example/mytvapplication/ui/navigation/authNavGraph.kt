@@ -20,7 +20,7 @@ fun NavGraphBuilder.authNavGraph(
         ) {
             SignIn2Screen(
                 rootNavController = rootNavController,
-                navController = navController
+//                navController = navController
             )
         }
     }

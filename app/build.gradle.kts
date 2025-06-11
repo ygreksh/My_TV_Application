@@ -3,6 +3,10 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+//    alias(libs.plugins.hilt.android)
+    id("com.google.dagger.hilt.android") version "2.51.1" apply false
+    id ("kotlin-kapt")
+
 }
 
 android {
@@ -65,8 +69,15 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.hilt.android)
+//    ksp(libs.hilt.android.compiler)
+
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.coil.compose)
 }
+
+//kapt {
+//    correctErrorTypes = true
+//}

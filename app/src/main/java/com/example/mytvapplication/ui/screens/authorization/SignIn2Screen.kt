@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
@@ -23,7 +24,8 @@ import com.example.mytvapplication.ui.screens.Screens
 @Composable
 fun SignIn2Screen(
     rootNavController: NavHostController,
-    navController: NavHostController
+//    navController: NavHostController,
+    viewModel: SignInViewModel = hiltViewModel()
 ) {
     Log.wtf("test", "start SignIn2Screen")
 
