@@ -1,14 +1,12 @@
 package com.example.mytvapplication.domain.usecase
 
 import com.example.mytvapplication.domain.model.LoginParams
-import com.example.mytvapplication.domain.repository.UserRepository
+import com.example.mytvapplication.domain.repository.AppRepository
 
-//class LoginUseCase(private val apiRepository: ApiRepository) {
-class LoginUseCase(private val userRepository: UserRepository) {
+class LoginUseCase(private val appRepository: AppRepository) {
     fun execute(): Boolean {
         val loginResult: Boolean =
-//            apiRepository.login(LoginParams(subscriptionId = "", password = ""))
-            userRepository.login(LoginParams(subscriptionId = "", password = ""))
+            appRepository.login(LoginParams(subscriptionId = "", password = ""))
         return loginResult
     }
 }

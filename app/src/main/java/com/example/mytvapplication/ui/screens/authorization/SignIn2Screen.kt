@@ -10,8 +10,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
+import com.example.mytvapplication.data.network.ApiRemoteDataSourceImpl
+import com.example.mytvapplication.data.network.RemoteDataSource
+import com.example.mytvapplication.data.repository.AppRepositoryImpl
+import com.example.mytvapplication.data.storage.LocalDataSourceImpl
 //import com.example.mytvapplication.data.repository.ApiRepositoryImpl
-import com.example.mytvapplication.data.repository.UserRepositoryImpl
 import com.example.mytvapplication.domain.repository.UserRepository
 import com.example.mytvapplication.domain.usecase.GetGroupsUseCase
 import com.example.mytvapplication.domain.usecase.LoginUseCase
@@ -24,10 +27,13 @@ fun SignIn2Screen(
 ) {
     Log.wtf("test", "start SignIn2Screen")
 
-//    val apiRepository = ApiRepositoryImpl()
-    val userRepository = UserRepositoryImpl()
-//    val loginUseCase = LoginUseCase(apiRepository = apiRepository)
-    val loginUseCase = LoginUseCase(userRepository = userRepository)
+    val remoteDataSource = ApiRemoteDataSourceImpl()
+    val localDataSource = LocalDataSourceImpl()
+    val appRepository = AppRepositoryImpl(
+        remoteDataSource = remoteDataSource,
+        localDataSource = localDataSource
+    )
+    val loginUseCase = LoginUseCase(appRepository = appRepository)
 
     Box(
         contentAlignment = Alignment.Center,
