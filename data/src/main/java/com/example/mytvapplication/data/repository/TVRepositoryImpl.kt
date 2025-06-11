@@ -1,10 +1,15 @@
 package com.example.mytvapplication.data.repository
 
+import com.example.mytvapplication.data.storage.ChannelsStorage
+import com.example.mytvapplication.data.storage.GroupsStorage
 import com.example.mytvapplication.domain.model.Channel
 import com.example.mytvapplication.domain.model.Group
 import com.example.mytvapplication.domain.repository.TVRepository
 
-class TVRepositoryImpl : TVRepository {
+class TVRepositoryImpl(
+    val channelsStorage: ChannelsStorage,
+    val groupStorage: GroupsStorage,
+) : TVRepository {
     override fun getGroups(): List<Group> {
         return listOf(
             Group(id = "1", name = "Group_1"),
@@ -12,6 +17,15 @@ class TVRepositoryImpl : TVRepository {
             Group(id = "3", name = "Group_3"),
             Group(id = "4", name = "Group_4")
         )
+
+//        val localResult = localDataSource.getGroups()
+//        if (localResult.isNotEmpty()) {
+//            return localResult
+//        }
+//        else {
+//            val remoteResult = remoteDataSource.getGroups()
+//            return remoteResult
+//        }
     }
 
     override fun getChannels(): List<Channel> {
