@@ -1,5 +1,7 @@
 package com.example.mytvapplication.data.repository
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.mytvapplication.data.network.RemoteDataSource
 import com.example.mytvapplication.data.storage.LocalDataSource
 import com.example.mytvapplication.domain.model.Channel
@@ -7,6 +9,8 @@ import com.example.mytvapplication.domain.model.Group
 import com.example.mytvapplication.domain.model.LoginParams
 import com.example.mytvapplication.domain.model.Movie
 import com.example.mytvapplication.domain.repository.AppRepository
+import java.time.LocalDateTime
+import java.util.Calendar
 
 class AppRepositoryImpl(
     val localDataSource: LocalDataSource,
@@ -17,8 +21,14 @@ class AppRepositoryImpl(
         return result
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun getGroups(): List<Group> {
         val localResult = localDataSource.getGroups()
+//        val now = LocalDateTime.now()
+//        val seconds = now.second
+//        val calendar = Calendar.getInstance()
+//        val milliseconds = calendar.timeInMillis
+
         if (localResult.isNotEmpty()) {
             return localResult
             }
