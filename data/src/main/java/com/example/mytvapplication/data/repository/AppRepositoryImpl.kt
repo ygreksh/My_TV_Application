@@ -10,7 +10,9 @@ import com.example.mytvapplication.domain.model.Channel
 import com.example.mytvapplication.domain.model.Group
 import com.example.mytvapplication.domain.model.LoginParams
 import com.example.mytvapplication.domain.model.Movie
+import com.example.mytvapplication.domain.repository.ApiResult
 import com.example.mytvapplication.domain.repository.AppRepository
+import kotlinx.coroutines.flow.Flow
 import java.time.LocalDateTime
 import java.util.Calendar
 import javax.inject.Inject
@@ -22,7 +24,7 @@ class AppRepositoryImpl @Inject constructor(
     val localDataSource = LocalDataSourceImpl()
     val remoteDataSource = ApiRemoteDataSourceImpl()
 
-    override fun login(params: LoginParams): Boolean {
+    override suspend fun login(params: LoginParams): Flow<ApiResult<Boolean>> {
         val result = remoteDataSource.login(params = params)
         return result
     }

@@ -4,10 +4,13 @@ import com.example.mytvapplication.domain.model.Channel
 import com.example.mytvapplication.domain.model.Group
 import com.example.mytvapplication.domain.model.LoginParams
 import com.example.mytvapplication.domain.model.Movie
+import com.example.mytvapplication.domain.repository.ApiResult
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 
 class ApiRemoteDataSourceImpl : RemoteDataSource {
-    override fun login(params: LoginParams): Boolean {
-        return true
+    override fun login(params: LoginParams): Flow<ApiResult<Boolean>> {
+//        return Flow<ApiResult<Boolean>>
     }
 
     override fun getGroups(): List<Group> {
