@@ -1,5 +1,6 @@
 package com.example.mytvapplication.ui
 
+import android.content.Context
 import com.example.mytvapplication.MainActivityViewModel
 import com.example.mytvapplication.data.repository.AppRepositoryImpl
 import com.example.mytvapplication.domain.repository.AppRepository
@@ -7,6 +8,7 @@ import com.example.mytvapplication.ui.screens.authorization.SignInViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 

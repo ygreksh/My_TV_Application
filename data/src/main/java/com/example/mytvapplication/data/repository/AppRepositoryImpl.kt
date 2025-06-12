@@ -2,8 +2,10 @@ package com.example.mytvapplication.data.repository
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.example.mytvapplication.data.network.ApiRemoteDataSourceImpl
 import com.example.mytvapplication.data.network.RemoteDataSource
 import com.example.mytvapplication.data.storage.LocalDataSource
+import com.example.mytvapplication.data.storage.LocalDataSourceImpl
 import com.example.mytvapplication.domain.model.Channel
 import com.example.mytvapplication.domain.model.Group
 import com.example.mytvapplication.domain.model.LoginParams
@@ -11,11 +13,15 @@ import com.example.mytvapplication.domain.model.Movie
 import com.example.mytvapplication.domain.repository.AppRepository
 import java.time.LocalDateTime
 import java.util.Calendar
+import javax.inject.Inject
 
-class AppRepositoryImpl(
-    val localDataSource: LocalDataSource,
-    val remoteDataSource: RemoteDataSource
+class AppRepositoryImpl @Inject constructor(
+//    val localDataSource: LocalDataSource,
+//    val remoteDataSource: RemoteDataSource
 ) : AppRepository {
+    val localDataSource = LocalDataSourceImpl()
+    val remoteDataSource = ApiRemoteDataSourceImpl()
+
     override fun login(params: LoginParams): Boolean {
         val result = remoteDataSource.login(params = params)
         return result

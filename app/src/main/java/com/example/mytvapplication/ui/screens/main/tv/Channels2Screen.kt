@@ -60,8 +60,8 @@ fun Channels2Screen(
     val remoteDataSource = ApiRemoteDataSourceImpl()
     val localDataSource = LocalDataSourceImpl()
     val appRepository = AppRepositoryImpl(
-        remoteDataSource = remoteDataSource,
-        localDataSource = localDataSource
+//        remoteDataSource = remoteDataSource,
+//        localDataSource = localDataSource
     )
     val getGroupsUseCase =
         GetGroupsUseCase(appRepository = appRepository)
