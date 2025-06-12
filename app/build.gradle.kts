@@ -3,13 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
-//    alias(libs.plugins.hilt.android)
-//    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android)
     id ("kotlin-kapt")
-    id ("com.google.dagger.hilt.android")
-
-//    kapt(libs.hilt.android.compiler)
-
 }
 
 android {
@@ -47,14 +42,6 @@ android {
 }
 
 dependencies {
-
-//    implementation(projects.myfeature1)
-//    implementation(project(":myfeature1"))
-//    implementation(project(mapOf("path" to ":myfeature1")))
-
-//    implementation(projects.mylibrary)
-    //    implementation(projects.feature_search)
-
     implementation(project(path = ":domain"))
     implementation(project(path = ":data"))
 
@@ -73,7 +60,6 @@ dependencies {
     androidTestImplementation(platform(libs.androidx.compose.bom))
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
-//    ksp(libs.hilt.android.compiler)
     kapt(libs.hilt.android.compiler)
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
