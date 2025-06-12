@@ -25,16 +25,4 @@ object AppModule {
     ): MainActivityViewModel {
         return MainActivityViewModel()
     }
-
-    @Singleton
-    @Provides
-    fun provideSignInViewModel(
-    appRepository: AppRepository
-    ): SignInViewModel {
-        return SignInViewModel(
-            appRepository = appRepository
-        )
-    }
-
-
 }
