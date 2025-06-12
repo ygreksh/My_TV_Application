@@ -26,8 +26,8 @@ fun SignIn2Screen(
 ) {
     Log.wtf("test", "start SignIn2Screen")
 
-    val remoteDataSource = ApiRemoteDataSourceImpl()
-    val localDataSource = LocalDataSourceImpl()
+//    val remoteDataSource = ApiRemoteDataSourceImpl()
+//    val localDataSource = LocalDataSourceImpl()
     val appRepository = AppRepositoryImpl(
 //        remoteDataSource = remoteDataSource,
 //        localDataSource = localDataSource
@@ -41,7 +41,6 @@ fun SignIn2Screen(
         Button(
             onClick = {
                 Log.wtf("test", "HomeScreen Login onClick()")
-//                rootNavController.navigate(Screens.Main.route)
                 val result = loginUseCase.execute()
                 if (result) {
                     rootNavController.navigate(Screens.Main.route)
