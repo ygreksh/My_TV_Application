@@ -1,4 +1,4 @@
-package com.example.mytvapplication.ui.screens.authorization
+package com.example.mytvapplication.ui.screens.authorization.SignUp
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
@@ -13,11 +13,11 @@ import androidx.tv.material3.Text
 import com.example.mytvapplication.ui.screens.Screens
 
 @Composable
-fun Login2Screen(
+fun SignUp2Screen(
     rootNavController: NavHostController,
     navController: NavHostController
 ) {
-    Log.wtf("test", "start Login2Screen")
+    Log.wtf("test", "start SignUp2Screen")
 
     Box(
         contentAlignment = Alignment.Center,
@@ -25,12 +25,12 @@ fun Login2Screen(
     ) {
         Button(
             onClick = {
-                Log.wtf("test", "HomeScreen Login onClick()")
+                Log.wtf("test", "HomeScreen Register onClick()")
                 navController.navigate(Screens.Main.route)
             }
         ) {
             Text(
-                text = "Login",
+                text = "Register",
                 color = Color.White
             )
         }

@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
@@ -19,7 +20,8 @@ import androidx.tv.material3.Text
 @Composable
 fun Settings2Screen(
 //    rootNavController: NavController,
-    navController: NavHostController
+    navController: NavHostController,
+    viewModel: SettingsViewModel = hiltViewModel()
 ) {
     Log.wtf("test", "start Settings2Screen")
 

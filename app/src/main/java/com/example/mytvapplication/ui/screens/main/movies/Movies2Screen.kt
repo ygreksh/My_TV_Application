@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.Button
@@ -33,7 +34,8 @@ import com.example.mytvapplication.ui.components.MovieCard
 @Composable
 fun Movies2Screen(
 //    rootNavController: NavController,
-    navController: NavHostController
+    navController: NavHostController,
+    viewModel: MoviesViewModel = hiltViewModel()
 ) {
     Log.wtf("test", "start Movies2Screen")
 

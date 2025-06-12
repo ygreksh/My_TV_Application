@@ -1,4 +1,4 @@
-package com.example.mytvapplication.ui.screens.main.tv
+package com.example.mytvapplication.ui.screens.main.tv.Channels
 
 import android.content.res.Configuration
 import android.util.Log
@@ -29,6 +29,7 @@ import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.tv.material3.Text
@@ -47,7 +48,8 @@ import com.example.mytvapplication.ui.screens.Screens
 fun Channels2Screen(
 //    rootNavController: NavController,
     navController: NavHostController,
-    selectedGroupId: String
+    selectedGroupId: String,
+    viewModel: ChannelsViewModel = hiltViewModel()
 ) {
     Log.wtf("test", "start Channels2Screen")
     val focusRequester = remember { FocusRequester() }

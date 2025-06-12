@@ -8,8 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.mytvapplication.ui.screens.Screens
-import com.example.mytvapplication.ui.screens.main.tv.Channels2Screen
-import com.example.mytvapplication.ui.screens.main.tv.Programs2Screen
+import com.example.mytvapplication.ui.screens.main.tv.Channels.Channels2Screen
+import com.example.mytvapplication.ui.screens.main.tv.Programs.Programs2Screen
 
 fun NavGraphBuilder.tvNavGraph(
     rootNavController: NavHostController,

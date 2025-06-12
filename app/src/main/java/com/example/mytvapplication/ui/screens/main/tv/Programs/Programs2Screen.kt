@@ -1,4 +1,4 @@
-package com.example.mytvapplication.ui.screens.main.tv
+package com.example.mytvapplication.ui.screens.main.tv.Programs
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
@@ -17,6 +17,7 @@ import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.type
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.tv.material3.Button
@@ -26,7 +27,8 @@ import com.example.mytvapplication.ui.screens.Screens
 @Composable
 fun Programs2Screen(
     rootNavController: NavController,
-    navController: NavHostController
+    navController: NavHostController,
+    viewModel: ProgramsViewModel = hiltViewModel()
 ) {
     Log.wtf("test", "start Programs2Screen")
     val focusRequester = remember { FocusRequester() }

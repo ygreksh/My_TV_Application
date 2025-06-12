@@ -1,4 +1,4 @@
-package com.example.mytvapplication.ui.screens.authorization
+package com.example.mytvapplication.ui.screens.authorization.SignIn
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
@@ -12,12 +12,9 @@ import androidx.navigation.NavHostController
 import androidx.tv.material3.Button
 import androidx.tv.material3.Text
 import com.example.mytvapplication.data.network.ApiRemoteDataSourceImpl
-import com.example.mytvapplication.data.network.RemoteDataSource
 import com.example.mytvapplication.data.repository.AppRepositoryImpl
 import com.example.mytvapplication.data.storage.LocalDataSourceImpl
 //import com.example.mytvapplication.data.repository.ApiRepositoryImpl
-import com.example.mytvapplication.domain.repository.UserRepository
-import com.example.mytvapplication.domain.usecase.GetGroupsUseCase
 import com.example.mytvapplication.domain.usecase.LoginUseCase
 import com.example.mytvapplication.ui.screens.Screens
 

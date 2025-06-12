@@ -5,7 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.example.mytvapplication.ui.screens.Screens
-import com.example.mytvapplication.ui.screens.authorization.SignIn2Screen
+import com.example.mytvapplication.ui.screens.authorization.SignIn.SignIn2Screen
 
 fun NavGraphBuilder.authNavGraph(
     rootNavController: NavHostController,
