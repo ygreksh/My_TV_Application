@@ -57,34 +57,21 @@ fun Channels2Screen(
     val focusRequester = remember { FocusRequester() }
     val emptyFocusRequester = FocusRequester()
 
-//    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    val uiState by viewModel.uiState.collectAsState()
-    val groupList by viewModel.groupList.collectAsState()
-    val channelList by viewModel.channelList.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+//    val uiState by viewModel.uiState.collectAsState()
+//    val groupList by viewModel.groupList.collectAsState()
+//    val channelList by viewModel.channelList.collectAsState()
 
-    val getGroupListFlow by viewModel.getGroupListFlow.collectAsState()
-    val getChannelListFlow by viewModel.getChannelListFlow.collectAsState()
+//    val getGroupListFlow by viewModel.getGroupListFlow.collectAsState()
+//    val getChannelListFlow by viewModel.getChannelListFlow.collectAsState()
 
 //    var groupList by remember { mutableStateOf<List<Group>>(emptyList()) }
 //    var channelList by remember { mutableStateOf<List<Channel>>(emptyList()) }
     var focusedGroupId by remember { mutableStateOf<String>(selectedGroupId) }
-//    val defaultScreenLabelText = "Channels2Screen"
-//    var screenLabelText by remember { mutableStateOf<String>(defaultScreenLabelText) }
-//    var screenLabelText by remember { mutableStateOf<String>() }
     val screenLabelText by viewModel.screenLabelText.collectAsState()
 
-//    val remoteDataSource = ApiRemoteDataSourceImpl()
-//    val localDataSource = LocalDataSourceImpl()
-    val appRepository = AppRepositoryImpl(
-//        remoteDataSource = remoteDataSource,
-//        localDataSource = localDataSource
-    )
-//    val getGroupsUseCase =
-//        GetGroupsUseCase(appRepository = appRepository)
-//    val getChannelsUseCase =
-//        GetChannelsUseCase(appRepository = appRepository)
-
     LaunchedEffect(Unit) {
+        Log.wtf("test", "Channels2Screen LaunchedEffect(Unit)")
         viewModel.getGroupList()
         viewModel.getChannelList()
     }
@@ -94,8 +81,8 @@ fun Channels2Screen(
     }
 
     LaunchedEffect(focusedGroupId) {
-//        val focusedGroup = uiState.groupList.find { it.id == focusedGroupId }
-        val focusedGroup = groupList.find { it.id == focusedGroupId }
+        val focusedGroup = uiState.groupList.find { it.id == focusedGroupId }
+//        val focusedGroup = groupList.find { it.id == focusedGroupId }
         Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroupId = ${focusedGroupId}")
         if (focusedGroup != null) {
             Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroup = ${focusedGroup.name}")
@@ -143,7 +130,8 @@ fun Channels2Screen(
                             Log.wtf("test", "Channels2Screen LazyColumn() onFocusEvent() isFocused = ${it.isFocused}, hasFocus = ${it.hasFocus}, isCaptured = ${it.isCaptured}")
                         }
                 ) {
-                    itemsIndexed(groupList) { index, group ->
+//                    itemsIndexed(groupList) { index, group ->
+                    itemsIndexed(uiState.groupList) { index, group ->
 //                        Log.wtf("test", "Channels2Screen itemsIndexed(): $index - ${group.name}")
 
                         ChannelGroupItemCard(
@@ -162,11 +150,6 @@ fun Channels2Screen(
                         )
                     }
                 }
-//                LaunchedEffect(Unit) {
-//                    if (groupList.isNotEmpty()) {
-//                        focusRequester.requestFocus()
-//                    }
-//                }
 
                 LazyColumn(
                     modifier = Modifier
@@ -183,38 +166,14 @@ fun Channels2Screen(
                             }
                         }
                 ) {
-                    itemsIndexed(channelList) { index, channel ->
+//                    itemsIndexed(channelList) { index, channel ->
+                    itemsIndexed(uiState.channelList) { index, channel ->
                         ChannelCard(
                             channel = channel
                             )
                     }
                 }
             }
-
-//            Button(
-//                onClick = {
-////                    Log.wtf("test", "Channels2Screen Channel1 onClick()")
-//                          },
-//                modifier = Modifier
-//                    .focusRequester(focusRequester)
-//                    .onKeyEvent{
-//                    if(
-//                        it.type == KeyEventType.KeyDown &&
-//                        it.key == Key.DirectionRight
-//                    ) {
-//                        Log.wtf("test", "Channel1 click RIGHT")
-//                        navController.navigate(Screens.Main.TV.Programs.route)
-//                        true
-//                    } else {
-//                        false
-//                    }
-//                }
-//            ) {
-//                Text(
-//                    text = "Channel 1",
-//                    color = Color.White
-//                )
-//            }
         }
     }
 }

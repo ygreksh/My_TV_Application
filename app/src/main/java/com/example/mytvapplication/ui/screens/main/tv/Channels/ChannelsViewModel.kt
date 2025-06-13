@@ -15,6 +15,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -47,11 +48,11 @@ class ChannelsViewModel @Inject constructor(
     private val _screenLabelText = MutableStateFlow<String>(defaultScreenLabelText)
     val screenLabelText: StateFlow<String> = _screenLabelText.asStateFlow()
 
-    private val _groupList = MutableStateFlow<List<Group>>(emptyList<Group>())
-    val groupList: StateFlow<List<Group>> = _groupList.asStateFlow()
+//    private val _groupList = MutableStateFlow<List<Group>>(emptyList<Group>())
+//    val groupList: StateFlow<List<Group>> = _groupList.asStateFlow()
 
-    private val _channelList = MutableStateFlow<List<Channel>>(emptyList<Channel>())
-    val channelList: StateFlow<List<Channel>> = _channelList.asStateFlow()
+//    private val _channelList = MutableStateFlow<List<Channel>>(emptyList<Channel>())
+//    val channelList: StateFlow<List<Channel>> = _channelList.asStateFlow()
 
     fun getGroupList() {
         Log.wtf("test", "ChannelsViewModel getGroupList() start")
@@ -63,17 +64,21 @@ class ChannelsViewModel @Inject constructor(
                     when (result) {
                         is ApiResult.Loading -> {
                             Log.wtf("test", "ChannelsViewModel getGroupList() Loading")
-                            _uiState.value.isLoading = true
+//                            _uiState.value.isLoading = true
+                            _uiState.update{ it.copy(isLoading = true)}
                             _screenLabelText.value = "Loading groups"
                         }
                         is ApiResult.Success -> {
-                            _uiState.value.isLoading = false
+                            _uiState.update{ it.copy(isLoading = false)}
+//                            _uiState.value.isLoading = false
                             _screenLabelText.value = defaultScreenLabelText
                             Log.wtf("test", "ChannelsViewModel getGroupList() Success: groupList.count() = ${result.result.count()}")
-                            _uiState.value.groupList = result.result
+//                            _uiState.value.groupList = result.result
+                            _uiState.update{ it.copy(groupList = result.result)}
                         }
                         is ApiResult.Error -> {
-                            _uiState.value.isLoading = false
+//                            _uiState.value.isLoading = false
+                            _uiState.update{ it.copy(isLoading = false)}
                             _screenLabelText.value = defaultScreenLabelText
                         }
                     }
@@ -99,7 +104,8 @@ class ChannelsViewModel @Inject constructor(
                             _uiState.value.isLoading = false
                             _screenLabelText.value = defaultScreenLabelText
                             Log.wtf("test", "ChannelsViewModel getChannelList() Success: channelList.count() = ${result.result.count()}")
-                            _uiState.value.channelList = result.result
+//                            _uiState.value.channelList = result.result
+                            _uiState.update{ it.copy(channelList = result.result)}
                         }
                         is ApiResult.Error -> {
                             _uiState.value.isLoading = false
