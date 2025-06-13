@@ -57,8 +57,8 @@ fun Channels2Screen(
     val focusRequester = remember { FocusRequester() }
     val emptyFocusRequester = FocusRequester()
 
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-//    val uiState by viewModel.uiState.collectAsState()
+//    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsState()
 //    val groupList by viewModel.groupList.collectAsState()
 //    val channelList by viewModel.channelList.collectAsState()
 
