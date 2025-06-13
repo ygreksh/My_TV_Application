@@ -36,6 +36,10 @@ class ChannelsViewModel @Inject constructor(
     private val _getChannelListFlow = MutableStateFlow<ApiResult<Any>?>(null)
     val getChannelListFlow: StateFlow<ApiResult<Any>?> = _getChannelListFlow.asStateFlow()
 
+    val defaultScreenLabelText = "Channels2Screen"
+    private val _screenLabelText = MutableStateFlow<String>(defaultScreenLabelText)
+    val screenLabelText: StateFlow<String> = _screenLabelText.asStateFlow()
+
     private val _groupList = MutableStateFlow<List<Group>>(emptyList<Group>())
     val groupList: StateFlow<List<Group>> = _groupList.asStateFlow()
 
@@ -52,13 +56,18 @@ class ChannelsViewModel @Inject constructor(
                         is ApiResult.Loading -> {
                             Log.wtf("test", "ChannelsViewModel getGroupList() Loading")
                             _uiState.value.isLoading = true
+                            _screenLabelText.value = "Loading groups"
                         }
                         is ApiResult.Success -> {
                             _uiState.value.isLoading = false
+                            _screenLabelText.value = defaultScreenLabelText
                             Log.wtf("test", "ChannelsViewModel getGroupList() Success: groupList.count() = ${result.result.count()}")
                             _uiState.value.groupList = result.result
                         }
-                        is ApiResult.Error -> _uiState.value.isLoading = false
+                        is ApiResult.Error -> {
+                            _uiState.value.isLoading = false
+                            _screenLabelText.value = defaultScreenLabelText
+                        }
                     }
 
                 }
@@ -75,13 +84,18 @@ class ChannelsViewModel @Inject constructor(
                         is ApiResult.Loading -> {
                             Log.wtf("test", "ChannelsViewModel getChannelList() Loading")
                             _uiState.value.isLoading = true
+                            _screenLabelText.value = "Loading channels"
                         }
                         is ApiResult.Success -> {
                             _uiState.value.isLoading = false
+                            _screenLabelText.value = defaultScreenLabelText
                             Log.wtf("test", "ChannelsViewModel getChannelList() Success: channelList.count() = ${result.result.count()}")
                             _uiState.value.channelList = result.result
                         }
-                        is ApiResult.Error -> _uiState.value.isLoading = false
+                        is ApiResult.Error -> {
+                            _uiState.value.isLoading = false
+                            _screenLabelText.value = defaultScreenLabelText
+                        }
                     }
 
                 }

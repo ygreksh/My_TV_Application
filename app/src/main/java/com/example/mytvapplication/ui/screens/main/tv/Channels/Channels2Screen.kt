@@ -65,8 +65,10 @@ fun Channels2Screen(
 //    var groupList by remember { mutableStateOf<List<Group>>(emptyList()) }
 //    var channelList by remember { mutableStateOf<List<Channel>>(emptyList()) }
     var focusedGroupId by remember { mutableStateOf<String>(selectedGroupId) }
-    val defaultScreenLabelText = "Channels2Screen"
-    var screenLabelText by remember { mutableStateOf<String>(defaultScreenLabelText) }
+//    val defaultScreenLabelText = "Channels2Screen"
+//    var screenLabelText by remember { mutableStateOf<String>(defaultScreenLabelText) }
+//    var screenLabelText by remember { mutableStateOf<String>() }
+    val screenLabelText by viewModel.screenLabelText.collectAsState()
 
 //    val remoteDataSource = ApiRemoteDataSourceImpl()
 //    val localDataSource = LocalDataSourceImpl()
