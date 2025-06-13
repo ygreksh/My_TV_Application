@@ -30,31 +30,30 @@ class AppRepositoryImpl @Inject constructor(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun getGroups(): List<Group> {
-        val localResult = localDataSource.getGroups()
-//        val now = LocalDateTime.now()
-//        val seconds = now.second
-//        val calendar = Calendar.getInstance()
-//        val milliseconds = calendar.timeInMillis
-
-        if (localResult.isNotEmpty()) {
-            return localResult
-            }
-        else {
+    override fun getGroups(): Flow<ApiResult<List<Group>>> {
+//        val localResult = localDataSource.getGroups()
+//
+//        if (localResult.isNotEmpty()) {
+//            return localResult
+//            }
+//        else {
             val remoteResult = remoteDataSource.getGroups()
             return remoteResult
-        }
+//        }
     }
 
-    override fun getChannels(): List<Channel> {
-        val localResult = localDataSource.getChannels()
-        if (localResult.isNotEmpty()) {
-            return localResult
-        }
-        else {
-            val remoteResult = remoteDataSource.getChannels()
-            return remoteResult
-        }
+    override fun getChannels(): Flow<ApiResult<List<Channel>>> {
+//        val localResult = localDataSource.getChannels()
+//        if (localResult.isNotEmpty()) {
+//            return localResult
+//        }
+//        else {
+//            val remoteResult = remoteDataSource.getChannels()
+//            return remoteResult
+//        }
+
+        val remoteResult = remoteDataSource.getChannels()
+        return remoteResult
     }
 
     override fun getLastMovies(): List<Movie> {

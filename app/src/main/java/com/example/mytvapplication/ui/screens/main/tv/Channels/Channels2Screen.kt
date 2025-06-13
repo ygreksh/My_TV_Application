@@ -43,6 +43,7 @@ import com.example.mytvapplication.domain.usecase.GetGroupsUseCase
 import com.example.mytvapplication.ui.components.ChannelCard
 import com.example.mytvapplication.ui.components.ChannelGroupItemCard
 import com.example.mytvapplication.ui.screens.Screens
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 fun Channels2Screen(
@@ -55,12 +56,15 @@ fun Channels2Screen(
     val focusRequester = remember { FocusRequester() }
     val emptyFocusRequester = FocusRequester()
 
-    var groupList by remember { mutableStateOf<List<Group>>(emptyList()) }
-    var channelList by remember { mutableStateOf<List<Channel>>(emptyList()) }
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+//    val uiState by viewModel.uiState.collectAsState()
+
+//    var groupList by remember { mutableStateOf<List<Group>>(emptyList()) }
+//    var channelList by remember { mutableStateOf<List<Channel>>(emptyList()) }
     var focusedGroupId by remember { mutableStateOf<String>(selectedGroupId) }
 
-    val remoteDataSource = ApiRemoteDataSourceImpl()
-    val localDataSource = LocalDataSourceImpl()
+//    val remoteDataSource = ApiRemoteDataSourceImpl()
+//    val localDataSource = LocalDataSourceImpl()
     val appRepository = AppRepositoryImpl(
 //        remoteDataSource = remoteDataSource,
 //        localDataSource = localDataSource
@@ -71,12 +75,14 @@ fun Channels2Screen(
         GetChannelsUseCase(appRepository = appRepository)
 
     LaunchedEffect(Unit) {
-        channelList = getChannelsUseCase.execute()
-        groupList = getGroupsUseCase.execute()
+//        channelList = getChannelsUseCase.execute()
+//        groupList = getGroupsUseCase.execute()
+        viewModel.getGroupList()
+        viewModel.getChannelList()
     }
 
     LaunchedEffect(focusedGroupId) {
-        val focusedGroup = groupList.find { it.id == focusedGroupId }
+        val focusedGroup = uiState.groupList.find { it.id == focusedGroupId }
         Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroupId = ${focusedGroupId}")
         if (focusedGroup != null) {
             Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroup = ${focusedGroup.name}")
@@ -124,7 +130,7 @@ fun Channels2Screen(
                             Log.wtf("test", "Channels2Screen LazyColumn() onFocusEvent() isFocused = ${it.isFocused}, hasFocus = ${it.hasFocus}, isCaptured = ${it.isCaptured}")
                         }
                 ) {
-                    itemsIndexed(groupList) { index, group ->
+                    itemsIndexed(uiState.groupList) { index, group ->
 //                        Log.wtf("test", "Channels2Screen itemsIndexed(): $index - ${group.name}")
 
                         ChannelGroupItemCard(
@@ -164,7 +170,7 @@ fun Channels2Screen(
                             }
                         }
                 ) {
-                    itemsIndexed(channelList) { index, channel ->
+                    itemsIndexed(uiState.channelList) { index, channel ->
                         ChannelCard(
                             channel = channel
                             )

@@ -23,22 +23,41 @@ class ApiRemoteDataSourceImpl(
         emit(ApiResult.Success(true))
     }
 
-    override fun getGroups(): List<Group> {
-        return listOf(
-            Group(id = "1", name = "RemoteGroup_1"),
-            Group(id = "2", name = "RemoteGroup_2"),
-            Group(id = "3", name = "RemoteGroup_3"),
-            Group(id = "4", name = "RemoteGroup_4")
-        )
+    override fun getGroups(): Flow<ApiResult<List<Group>>> = flow {
+        Log.d("test", "ApiRemoteDataSourceImpl getGroups(): Loading")
+        emit(ApiResult.Loading)
+        delay(1000)
+        Log.d("test", "ApiRemoteDataSourceImpl getGroups(): Success")
+        emit(ApiResult.Success(
+            listOf(
+                Group(id = "1", name = "RemoteGroup_1"),
+                Group(id = "2", name = "RemoteGroup_2"),
+                Group(id = "3", name = "RemoteGroup_3"),
+                Group(id = "4", name = "RemoteGroup_4")
+            )
+        ))
+
+//        return listOf(
+//            Group(id = "1", name = "RemoteGroup_1"),
+//            Group(id = "2", name = "RemoteGroup_2"),
+//            Group(id = "3", name = "RemoteGroup_3"),
+//            Group(id = "4", name = "RemoteGroup_4")
+//        )
     }
 
-    override fun getChannels(): List<Channel> {
-        return listOf(
-            Channel(id = "1", name = "RemoteChannel_1", icon = ""),
-            Channel(id = "2", name = "RemoteChannel_2", icon = ""),
-            Channel(id = "3", name = "RemoteChannel_3", icon = ""),
-            Channel(id = "4", name = "RemoteChannel_4", icon = "")
-        )
+    override fun getChannels(): Flow<ApiResult<List<Channel>>> = flow {
+        Log.d("test", "ApiRemoteDataSourceImpl getChannels(): Loading")
+        emit(ApiResult.Loading)
+        delay(1000)
+        Log.d("test", "ApiRemoteDataSourceImpl getChannels(): Success")
+        emit(ApiResult.Success(
+            listOf(
+                Channel(id = "1", name = "RemoteChannel_1", icon = ""),
+                Channel(id = "2", name = "RemoteChannel_2", icon = ""),
+                Channel(id = "3", name = "RemoteChannel_3", icon = ""),
+                Channel(id = "4", name = "RemoteChannel_4", icon = "")
+            )
+        ))
     }
 
     override fun getLastMovies(): List<Movie> {

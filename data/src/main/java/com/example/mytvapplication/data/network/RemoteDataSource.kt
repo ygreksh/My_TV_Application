@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface RemoteDataSource {
     fun login(params: LoginParams) : Flow<ApiResult<Boolean>>
-    fun getGroups() : List<Group>
-    fun getChannels() : List<Channel>
+    fun getGroups() : Flow<ApiResult<List<Group>>>
+    fun getChannels() : Flow<ApiResult<List<Channel>>>
     fun getLastMovies() : List<Movie>
 }
