@@ -1,16 +1,26 @@
 package com.example.mytvapplication.data.network
 
+import android.util.Log
+import com.example.mytvapplication.data.storage.LocalDataSource
 import com.example.mytvapplication.domain.model.Channel
 import com.example.mytvapplication.domain.model.Group
 import com.example.mytvapplication.domain.model.LoginParams
 import com.example.mytvapplication.domain.model.Movie
 import com.example.mytvapplication.domain.repository.ApiResult
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flow
 
-class ApiRemoteDataSourceImpl : RemoteDataSource {
-    override fun login(params: LoginParams): Flow<ApiResult<Boolean>> {
-//        return Flow<ApiResult<Boolean>>
+class ApiRemoteDataSourceImpl(
+//    private val remoteDataSource: RemoteDataSource,
+) : RemoteDataSource {
+    override fun login(params: LoginParams): Flow<ApiResult<Boolean>> = flow {
+        Log.d("test", "ApiRemoteDataSourceImpl login(): Loading")
+        emit(ApiResult.Loading)
+        delay(1000)
+        Log.d("test", "ApiRemoteDataSourceImpl login(): Success")
+        emit(ApiResult.Success(true))
     }
 
     override fun getGroups(): List<Group> {

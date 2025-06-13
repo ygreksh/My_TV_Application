@@ -14,7 +14,7 @@ import java.util.Date
 import javax.inject.Inject
 
 data class SignInUiState(
-    val isLoading: Boolean = false,
+    var isLoading: Boolean = false,
     val isLogged: Boolean = false,
 )
 
@@ -34,12 +34,15 @@ class SignInViewModel @Inject constructor(
     fun login(params: LoginParams) {
 
         viewModelScope.launch {
-            val result = appRepository.login(params)
+            appRepository.login(params)
+                .collect { result ->
+                    when (result) {
+                        is ApiResult.Loading -> uiState.value.isLoading = true
+                        is ApiResult.Success -> userIsLoggedIn.value = true
+                        is ApiResult.Error -> userIsLoggedIn.value = false
+                    }
 
-//            when(result.collect()) {
-//                is ApiResult.Success<Boolean> ->
-//            }
-            userIsLoggedIn.value = true
+                }
         }
     }
 }
