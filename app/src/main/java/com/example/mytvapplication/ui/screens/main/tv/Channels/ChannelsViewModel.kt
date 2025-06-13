@@ -8,6 +8,8 @@ import com.example.mytvapplication.domain.model.Group
 import com.example.mytvapplication.domain.model.LoginParams
 import com.example.mytvapplication.domain.repository.ApiResult
 import com.example.mytvapplication.domain.repository.AppRepository
+import com.example.mytvapplication.domain.usecase.GetChannelsUseCase
+import com.example.mytvapplication.domain.usecase.GetGroupsUseCase
 import com.example.mytvapplication.ui.screens.authorization.SignIn.SignInUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,6 +28,11 @@ data class ChannelsScreenUiState(
 class ChannelsViewModel @Inject constructor(
     private val appRepository: AppRepository
 ) : ViewModel() {
+
+    val getGroupsUseCase =
+        GetGroupsUseCase(appRepository = appRepository)
+    val getChannelsUseCase =
+        GetChannelsUseCase(appRepository = appRepository)
 
     private val _uiState = MutableStateFlow(ChannelsScreenUiState())
     val uiState: StateFlow<ChannelsScreenUiState> = _uiState.asStateFlow()
@@ -50,7 +57,8 @@ class ChannelsViewModel @Inject constructor(
         Log.wtf("test", "ChannelsViewModel getGroupList() start")
 
         viewModelScope.launch {
-            appRepository.getGroups()
+//            appRepository.getGroups()
+            getGroupsUseCase.execute()
                 .collect { result ->
                     when (result) {
                         is ApiResult.Loading -> {
@@ -78,7 +86,8 @@ class ChannelsViewModel @Inject constructor(
         Log.wtf("test", "ChannelsViewModel getChannelList() start")
 
         viewModelScope.launch {
-            appRepository.getChannels()
+//            appRepository.getChannels()
+            getChannelsUseCase.execute()
                 .collect { result ->
                     when (result) {
                         is ApiResult.Loading -> {

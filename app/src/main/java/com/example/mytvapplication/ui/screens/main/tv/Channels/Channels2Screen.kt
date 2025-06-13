@@ -62,6 +62,9 @@ fun Channels2Screen(
     val groupList by viewModel.groupList.collectAsState()
     val channelList by viewModel.channelList.collectAsState()
 
+    val getGroupListFlow by viewModel.getGroupListFlow.collectAsState()
+    val getChannelListFlow by viewModel.getChannelListFlow.collectAsState()
+
 //    var groupList by remember { mutableStateOf<List<Group>>(emptyList()) }
 //    var channelList by remember { mutableStateOf<List<Channel>>(emptyList()) }
     var focusedGroupId by remember { mutableStateOf<String>(selectedGroupId) }
@@ -76,10 +79,10 @@ fun Channels2Screen(
 //        remoteDataSource = remoteDataSource,
 //        localDataSource = localDataSource
     )
-    val getGroupsUseCase =
-        GetGroupsUseCase(appRepository = appRepository)
-    val getChannelsUseCase =
-        GetChannelsUseCase(appRepository = appRepository)
+//    val getGroupsUseCase =
+//        GetGroupsUseCase(appRepository = appRepository)
+//    val getChannelsUseCase =
+//        GetChannelsUseCase(appRepository = appRepository)
 
     LaunchedEffect(Unit) {
         viewModel.getGroupList()
