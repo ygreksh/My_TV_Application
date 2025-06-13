@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -56,8 +57,10 @@ fun Channels2Screen(
     val focusRequester = remember { FocusRequester() }
     val emptyFocusRequester = FocusRequester()
 
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-//    val uiState by viewModel.uiState.collectAsState()
+//    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by viewModel.uiState.collectAsState()
+    val groupList by viewModel.groupList.collectAsState()
+    val channelList by viewModel.channelList.collectAsState()
 
 //    var groupList by remember { mutableStateOf<List<Group>>(emptyList()) }
 //    var channelList by remember { mutableStateOf<List<Channel>>(emptyList()) }
@@ -82,7 +85,8 @@ fun Channels2Screen(
     }
 
     LaunchedEffect(focusedGroupId) {
-        val focusedGroup = uiState.groupList.find { it.id == focusedGroupId }
+//        val focusedGroup = uiState.groupList.find { it.id == focusedGroupId }
+        val focusedGroup = groupList.find { it.id == focusedGroupId }
         Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroupId = ${focusedGroupId}")
         if (focusedGroup != null) {
             Log.wtf("test", "Channels2Screen LaunchedEffect() focusedGroup = ${focusedGroup.name}")
@@ -130,7 +134,7 @@ fun Channels2Screen(
                             Log.wtf("test", "Channels2Screen LazyColumn() onFocusEvent() isFocused = ${it.isFocused}, hasFocus = ${it.hasFocus}, isCaptured = ${it.isCaptured}")
                         }
                 ) {
-                    itemsIndexed(uiState.groupList) { index, group ->
+                    itemsIndexed(groupList) { index, group ->
 //                        Log.wtf("test", "Channels2Screen itemsIndexed(): $index - ${group.name}")
 
                         ChannelGroupItemCard(
@@ -170,7 +174,7 @@ fun Channels2Screen(
                             }
                         }
                 ) {
-                    itemsIndexed(uiState.channelList) { index, channel ->
+                    itemsIndexed(channelList) { index, channel ->
                         ChannelCard(
                             channel = channel
                             )

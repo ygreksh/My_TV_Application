@@ -33,7 +33,9 @@ class ApiRemoteDataSourceImpl(
                 Group(id = "1", name = "RemoteGroup_1"),
                 Group(id = "2", name = "RemoteGroup_2"),
                 Group(id = "3", name = "RemoteGroup_3"),
-                Group(id = "4", name = "RemoteGroup_4")
+                Group(id = "4", name = "RemoteGroup_4"),
+                Group(id = "5", name = "RemoteGroup_5"),
+                Group(id = "6", name = "RemoteGroup_6")
             )
         ))
 
@@ -55,7 +57,11 @@ class ApiRemoteDataSourceImpl(
                 Channel(id = "1", name = "RemoteChannel_1", icon = ""),
                 Channel(id = "2", name = "RemoteChannel_2", icon = ""),
                 Channel(id = "3", name = "RemoteChannel_3", icon = ""),
-                Channel(id = "4", name = "RemoteChannel_4", icon = "")
+                Channel(id = "4", name = "RemoteChannel_4", icon = ""),
+                Channel(id = "5", name = "RemoteChannel_5", icon = ""),
+                Channel(id = "6", name = "RemoteChannel_6", icon = ""),
+                Channel(id = "7", name = "RemoteChannel_7", icon = ""),
+                Channel(id = "8", name = "RemoteChannel_8", icon = ""),
             )
         ))
     }

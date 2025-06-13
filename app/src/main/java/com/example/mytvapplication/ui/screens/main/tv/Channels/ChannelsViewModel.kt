@@ -1,5 +1,6 @@
 package com.example.mytvapplication.ui.screens.main.tv.Channels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mytvapplication.domain.model.Channel
@@ -35,15 +36,29 @@ class ChannelsViewModel @Inject constructor(
     private val _getChannelListFlow = MutableStateFlow<ApiResult<Any>?>(null)
     val getChannelListFlow: StateFlow<ApiResult<Any>?> = _getChannelListFlow.asStateFlow()
 
+    private val _groupList = MutableStateFlow<List<Group>>(emptyList<Group>())
+    val groupList: StateFlow<List<Group>> = _groupList.asStateFlow()
+
+    private val _channelList = MutableStateFlow<List<Channel>>(emptyList<Channel>())
+    val channelList: StateFlow<List<Channel>> = _channelList.asStateFlow()
+
     fun getGroupList() {
+        Log.wtf("test", "ChannelsViewModel getGroupList() start")
 
         viewModelScope.launch {
             appRepository.getGroups()
                 .collect { result ->
                     when (result) {
-                        is ApiResult.Loading -> uiState.value.isLoading = true
-                        is ApiResult.Success -> uiState.value.groupList = result.result
-                        is ApiResult.Error -> uiState.value.isLoading = true
+                        is ApiResult.Loading -> {
+                            Log.wtf("test", "ChannelsViewModel getGroupList() Loading")
+                            _uiState.value.isLoading = true
+                        }
+                        is ApiResult.Success -> {
+                            _uiState.value.isLoading = false
+                            Log.wtf("test", "ChannelsViewModel getGroupList() Success: groupList.count() = ${result.result.count()}")
+                            _uiState.value.groupList = result.result
+                        }
+                        is ApiResult.Error -> _uiState.value.isLoading = false
                     }
 
                 }
@@ -51,14 +66,22 @@ class ChannelsViewModel @Inject constructor(
     }
 
     fun getChannelList() {
+        Log.wtf("test", "ChannelsViewModel getChannelList() start")
 
         viewModelScope.launch {
             appRepository.getChannels()
                 .collect { result ->
                     when (result) {
-                        is ApiResult.Loading -> uiState.value.isLoading = true
-                        is ApiResult.Success -> uiState.value.channelList = result.result
-                        is ApiResult.Error -> uiState.value.isLoading = true
+                        is ApiResult.Loading -> {
+                            Log.wtf("test", "ChannelsViewModel getChannelList() Loading")
+                            _uiState.value.isLoading = true
+                        }
+                        is ApiResult.Success -> {
+                            _uiState.value.isLoading = false
+                            Log.wtf("test", "ChannelsViewModel getChannelList() Success: channelList.count() = ${result.result.count()}")
+                            _uiState.value.channelList = result.result
+                        }
+                        is ApiResult.Error -> _uiState.value.isLoading = false
                     }
 
                 }
