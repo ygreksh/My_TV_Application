@@ -65,6 +65,8 @@ fun Channels2Screen(
 //    var groupList by remember { mutableStateOf<List<Group>>(emptyList()) }
 //    var channelList by remember { mutableStateOf<List<Channel>>(emptyList()) }
     var focusedGroupId by remember { mutableStateOf<String>(selectedGroupId) }
+    val defaultScreenLabelText = "Channels2Screen"
+    var screenLabelText by remember { mutableStateOf<String>(defaultScreenLabelText) }
 
 //    val remoteDataSource = ApiRemoteDataSourceImpl()
 //    val localDataSource = LocalDataSourceImpl()
@@ -78,10 +80,12 @@ fun Channels2Screen(
         GetChannelsUseCase(appRepository = appRepository)
 
     LaunchedEffect(Unit) {
-//        channelList = getChannelsUseCase.execute()
-//        groupList = getGroupsUseCase.execute()
         viewModel.getGroupList()
         viewModel.getChannelList()
+    }
+
+    LaunchedEffect(uiState) {
+        Log.wtf("test", "Channels2Screen LaunchedEffect(uiState) uiState.groupList.count() = ${uiState.groupList.count()}, uiState.channelList.count() = ${uiState.channelList.count()}")
     }
 
     LaunchedEffect(focusedGroupId) {
@@ -114,7 +118,7 @@ fun Channels2Screen(
 //        }
         Column() {
             Text(
-                text = "Channels2Screen",
+                text = screenLabelText,
                 color = Color.White
             )
 
